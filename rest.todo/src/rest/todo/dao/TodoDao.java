@@ -25,7 +25,6 @@ public enum TodoDao {
     todo.setDescription("Read complete http://www.efrei.fr");
     contentProvider.put("2", todo);
     
-    
     Cinema cinema = new Cinema("test", "Paris");
     Cinema cinema2 = new Cinema("test2", "Paris");
     Cinema cinema3 = new Cinema("test3", "Lyon");
@@ -40,10 +39,8 @@ public enum TodoDao {
     return contentProvider;
   }
   
-  
   public Map<String, Cinema> getCinemas(){
 	return contentCinema;
   }
 	  
-  
 } 
