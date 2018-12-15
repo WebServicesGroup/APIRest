@@ -65,4 +65,36 @@ public class CinemasResources {
 		  
 	    return list;
 	  }
+	  
+	  // retuns the number of todos
+	  // Use http://localhost:8080/rest.todo/rest/todos/count
+	  // to get the total number of records
+	  @GET
+	  @Path("count")
+	  @Produces(MediaType.TEXT_PLAIN)
+	  public String getCount() {
+	    int count = TodoDao.instance.getCinemas().size();
+	    return String.valueOf(count);
+	  }
+	  
+	  
+	  @POST
+	  @Path("/createCinema")
+	  @Produces(MediaType.TEXT_HTML)
+	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	  public void newCinema(@FormParam("city") String city,
+			  @FormParam("name") String name,
+	      @Context HttpServletResponse servletResponse) throws IOException {
+		  System.out.println("city : " + city);
+		  System.out.println("name : " + name);
+	    Cinema cinema = new Cinema(name, city);
+	    TodoDao.instance.getCinemas().put(city, cinema);
+	    
+	    // TODO when changes.
+	    servletResponse.sendRedirect("../../create_cinema.html");
+	  }
+	  
+	  
+	  
+	  
 }
