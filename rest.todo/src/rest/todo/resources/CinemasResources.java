@@ -51,7 +51,6 @@ public class CinemasResources {
 	  @GET
 	  @Produces(MediaType.TEXT_XML)
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	 
 	  public List<Cinema> getCinemasFrom(@QueryParam("city") String city) {
 		  ArrayList<Cinema> list = new ArrayList<Cinema>();
 		  	//debug:
