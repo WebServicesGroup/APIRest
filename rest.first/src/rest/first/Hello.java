@@ -26,7 +26,7 @@ public class Hello {
     return "Hello Jersey";
  
   }
-
+/*   wenting AGAIN*/
   // This method is called if XML is request
   @GET
   @Produces(MediaType.TEXT_XML)
@@ -42,4 +42,5 @@ public class Hello {
         + "<body><h1>" + "Hello Jersey" + "</body></h1>" + "</html> ";
   }
 
+  // comment test guillu97
 } 
