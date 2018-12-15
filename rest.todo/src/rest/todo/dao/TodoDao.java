@@ -9,9 +9,7 @@ import rest.todo.model.Todo;
 
 public enum TodoDao {
   instance;
-  
-	// TEEST TESTTT
-	
+
   private Map<String, Todo> contentProvider = new HashMap<String, Todo>();
   
   private Map<String, Cinema> contentCinema = new HashMap<String, Cinema>();
@@ -25,7 +23,6 @@ public enum TodoDao {
     todo.setDescription("Read complete http://www.efrei.fr");
     contentProvider.put("2", todo);
     
-    
     Cinema cinema = new Cinema("test", "Paris");
     Cinema cinema2 = new Cinema("test2", "Paris");
     Cinema cinema3 = new Cinema("test3", "Lyon");
@@ -34,19 +31,14 @@ public enum TodoDao {
     contentCinema.put("2", cinema2);
     contentCinema.put("3", cinema3);
     
-    
-    
-    
   }
   
   public Map<String, Todo> getModel(){
     return contentProvider;
   }
   
-  
   public Map<String, Cinema> getCinemas(){
 	return contentCinema;
   }
 	  
-  
 } 
