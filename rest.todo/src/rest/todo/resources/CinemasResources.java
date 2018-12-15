@@ -35,12 +35,24 @@ public class CinemasResources {
 	// Return the list of todos to the user in the browser
 	  
 	  @GET
-	  @Produces(MediaType.TEXT_XML)
+	  @Produces(MediaType.TEXT_HTML)
 	  @Path("/all")
-	  public List<Cinema> getCinemasBrowser() {
-	    List<Cinema> cinemas = new ArrayList<Cinema>();
+	  public String getCinemasBrowser() {
+		  
+	    List<Cinema> cinemas = new ArrayList<Cinema>() {
+	    	 @Override
+	    	 public String toString() {
+	    		String str = "Cinemas: ";
+	    		for (Cinema cinema : this) {
+	    			str += cinema;
+	    		}
+				return str;
+	    		 
+	    	 }
+	    };
+	    
 	    cinemas.addAll(TodoDao.instance.getCinemas().values());
-	    return cinemas; 
+	    return "<html>" + cinemas + "</html>"; 
 	  }
 	  
 	  
