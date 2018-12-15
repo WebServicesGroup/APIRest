@@ -34,13 +34,43 @@ public class CinemasResources {
 	  
 	// Return the list of todos to the user in the browser
 	  
+	  /*
 	  @GET
 	  @Produces(MediaType.TEXT_XML)
-	  @Path("/all")
-	  public List<Cinema> getCinemasBrowser() {
-	    List<Cinema> cinemas = new ArrayList<Cinema>();
+	  public List<Cinema> getCinemasXml() {
+	    List<Cinema> cinemas = new ArrayList<Cinema>(){
+			@Override
+			public
+			String toString() {
+				String str = "";
+				for(Cinema cinema : this) {
+					str+=cinema;
+				}
+				return str;
+			}
+		};
 	    cinemas.addAll(TodoDao.instance.getCinemas().values());
 	    return cinemas; 
+	  }
+	  */
+	  
+	  
+	  @GET
+	  @Produces(MediaType.TEXT_HTML)
+	  public String getCinemasHTML() {
+	    List<Cinema> cinemas = new ArrayList<Cinema>(){
+			@Override
+			public
+			String toString() {
+				String str = "";
+				for(Cinema cinema : this) {
+					str+=cinema;
+				}
+				return str;
+			}
+		};
+	    cinemas.addAll(TodoDao.instance.getCinemas().values());
+	    return "<html>" + cinemas + "</html>"; 
 	  }
 	  
 	  
@@ -52,7 +82,17 @@ public class CinemasResources {
 	  @Produces(MediaType.TEXT_XML)
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	  public List<Cinema> getCinemasFrom(@QueryParam("city") String city) {
-		  ArrayList<Cinema> list = new ArrayList<Cinema>();
+		  ArrayList<Cinema> list = new ArrayList<Cinema>(){
+				@Override
+				public
+				String toString() {
+					String str = "";
+					for(Cinema cinema : this) {
+						str+=cinema;
+					}
+					return str;
+				}
+			};
 		  	//debug:
 			//System.out.println("city:"+city);
 			for(Cinema cinema : TodoDao.instance.getCinemas().values()) {
