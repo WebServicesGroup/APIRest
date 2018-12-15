@@ -34,14 +34,45 @@ public class CinemasResources {
 	  
 	// Return the list of todos to the user in the browser
 	  
+	  /*
 	  @GET
 	  @Produces(MediaType.TEXT_XML)
-	  @Path("/all")
-	  public List<Cinema> getCinemasBrowser() {
-	    List<Cinema> cinemas = new ArrayList<Cinema>();
+	  public List<Cinema> getCinemasXml() {
+	    List<Cinema> cinemas = new ArrayList<Cinema>(){
+			@Override
+			public
+			String toString() {
+				String str = "";
+				for(Cinema cinema : this) {
+					str+=cinema;
+				}
+				return str;
+			}
+		};
 	    cinemas.addAll(TodoDao.instance.getCinemas().values());
 	    return cinemas; 
 	  }
+	  */
+	  
+	  
+	  @GET
+	  @Produces(MediaType.TEXT_HTML)
+	  public String getCinemasHTML() {
+	    List<Cinema> cinemas = new ArrayList<Cinema>(){
+			@Override
+			public
+			String toString() {
+				String str = "";
+				for(Cinema cinema : this) {
+					str+=cinema;
+				}
+				return str;
+			}
+		};
+	    cinemas.addAll(TodoDao.instance.getCinemas().values());
+	    return "<html>" + cinemas + "</html>"; 
+	  }
+	  
 	  
 	  
 	// Defines that the next path parameter after todos is
@@ -49,12 +80,23 @@ public class CinemasResources {
 	  // Allows to type http://localhost:8080/rest.todo/rest/todos/1
 	  // 1 will be treaded as parameter todo and passed to TodoResource
 	  @GET
-	  @Produces(MediaType.TEXT_XML)
+	  @Path("/query")
+	  @Produces(MediaType.TEXT_HTML)
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	  public List<Cinema> getCinemasFrom(@QueryParam("city") String city) {
-		  ArrayList<Cinema> list = new ArrayList<Cinema>();
+	  public String getCinemasFrom(@QueryParam("city") String city) {
+		  ArrayList<Cinema> list = new ArrayList<Cinema>(){
+				@Override
+				public
+				String toString() {
+					String str = "";
+					for(Cinema cinema : this) {
+						str+=cinema;
+					}
+					return str;
+				}
+			};
 		  	//debug:
-			//System.out.println("city:"+city);
+//			//System.out.println("city:"+city);
 			for(Cinema cinema : TodoDao.instance.getCinemas().values()) {
 				if(cinema==null)
 					throw new RuntimeException("Get: Cinema with " + city +  " not found");
@@ -62,8 +104,7 @@ public class CinemasResources {
 					list.add(cinema);
 				}
 			}
-		  
-	    return list;
+	    return "<html>" + list + "</html>";
 	  }
 	  
 	  // retuns the number of todos

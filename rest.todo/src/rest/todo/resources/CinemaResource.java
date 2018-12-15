@@ -37,7 +37,7 @@ public class CinemaResource {
 //For the browser
   
  @GET
- @Produces(MediaType.TEXT_XML)
+ @Produces(MediaType.TEXT_HTML)
  public Cinema getCinemaHTML() {
    Cinema cinema = TodoDao.instance.getCinemas().get(city);
    if(cinema==null)
