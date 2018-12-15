@@ -34,9 +34,6 @@ public enum TodoDao {
     contentCinema.put("2", cinema2);
     contentCinema.put("3", cinema3);
     
-    
-    
-    
   }
   
   public Map<String, Todo> getModel(){
