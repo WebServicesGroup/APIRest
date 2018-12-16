@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -153,14 +155,16 @@ public class CinemasResources {
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	  public void newCinema(@FormParam("city") String city,
 			  @FormParam("name") String name,
-	      @Context HttpServletResponse servletResponse) throws IOException {
+	      @Context HttpServletResponse servletResponse,
+	      @Context HttpServletRequest request) throws IOException, ServletException {
 		  System.out.println("city : " + city);
 		  System.out.println("name : " + name);
 	    Cinema cinema = new Cinema(name, city);
 	    TodoDao.instance.getCinemas().put(city, cinema);
 	    
 	    // TODO when changes.
-	    servletResponse.sendRedirect("../../create_cinema.html");
+	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse); 
+	    //servletResponse.sendRedirect("../../create_cinema.html");
 	  }
 	  
 	  

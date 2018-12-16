@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="../rest.todo/rest/sessions/createSession" method="POST">
+<form action="../sessions/createSession" method="POST">
 
 <!-- (int id, int movie_id, int cinema_id, String hour, String date, String version) -->
 
@@ -17,8 +17,8 @@
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	 <script>
 		$(document).ready(function(){
-			$("#dropdownMovies").load("../rest.todo/rest/movies/dropdown");
-		    $("#dropdownCinemas").load("../rest.todo/rest/cinemas/dropdown");
+			$("#dropdownMovies").load("../movies/dropdown");
+		    $("#dropdownCinemas").load("../cinemas/dropdown");
 		});
 	</script>
 

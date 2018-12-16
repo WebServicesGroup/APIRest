@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -76,7 +78,8 @@ public class SessionsResources {
 			  @FormParam("hour") String hour,
 			  @FormParam("date") String date,
 			  @FormParam("version") String version,
-	      @Context HttpServletResponse servletResponse) throws IOException {
+	      @Context HttpServletResponse servletResponse,
+	      @Context HttpServletRequest request) throws IOException, ServletException {
 
 		  System.out.println("movie_id : " + movieId);
 		  System.out.println("cinema_id : " + cinemaId);
@@ -87,7 +90,8 @@ public class SessionsResources {
 	    TodoDao.instance.getSessions().add(session);
 	    
 	    // TODO when changes.
-	    servletResponse.sendRedirect("../../create_session.html");
+	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse); 
+	    //servletResponse.sendRedirect("../../create_session.html");
 	  }
 	  
 	  

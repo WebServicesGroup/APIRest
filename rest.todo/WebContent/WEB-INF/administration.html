@@ -6,14 +6,17 @@
 </head>
 <body>
 
-	 <form>
-		<input type="button" value="create cinema" onclick="window.location.href='create_cinema.html'" />
+	<form action="/rest.todo/rest/users/createCinema" method="POST">
+	 	<input name="connected" value="true" type="hidden"/>
+		<input type="submit" value="create cinema"/>
 	</form> 
-	<form>
-		<input type="button" value="create movie" onclick="window.location.href='create_movie.html'" />
-	</form> 
-	<form>
-		<input type="button" value="create session" onclick="window.location.href='create_session.html'" />
-	</form> 
+	<form action="/rest.todo/rest/users/createMovie" method="POST">
+	 	<input name="connected" value="true" type="hidden"/>
+		<input type="submit" value="create movie"/>
+	</form>
+	<form action="/rest.todo/rest/users/createSession" method="POST">
+	 	<input name="connected" value="true" type="hidden"/>
+		<input type="submit" value="create session"/>
+	</form>
 </body>
 </html>

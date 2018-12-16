@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -133,7 +135,8 @@ public class MoviesResources {
 			  @FormParam("on_screen_date") String on_screen_date,
 			  @FormParam("language") String language,
 			  @FormParam("description") String description,
-	      @Context HttpServletResponse servletResponse) throws IOException {
+	      @Context HttpServletResponse servletResponse,
+	      @Context HttpServletRequest request) throws IOException, ServletException {
 		  System.out.println("name : " + name);
 		  System.out.println("rate : " + rate);
 		  System.out.println("type : " + type);
@@ -149,6 +152,7 @@ public class MoviesResources {
 	    TodoDao.instance.getMovies().add(movie);
 	    
 	    // TODO when changes.
-	    servletResponse.sendRedirect("../../create_movie.html");
+	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse); 
+	    //servletResponse.sendRedirect("../../create_movie.html");
 	  }	  
 }
