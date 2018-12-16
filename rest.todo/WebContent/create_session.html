@@ -5,51 +5,30 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="../rest.todo/rest/cinemas/createSession" method="POST">
+<form action="../rest.todo/rest/sessions/createSession" method="POST">
 
 <!-- (int id, int movie_id, int cinema_id, String hour, String date, String version) -->
 
-  <div id="dropdownCinemas"></div>
+	Movies:<div id="dropdownMovies">MoviesDropDown</div>
+
+ 	Cinema:<div id="dropdownCinemas">CinemasDropDown</div>
+  
 	 
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	 <script>
 		$(document).ready(function(){
+			$("#dropdownMovies").load("../rest.todo/rest/movies/dropdown");
 		    $("#dropdownCinemas").load("../rest.todo/rest/cinemas/dropdown");
 		});
 	</script>
 
 
-  movieName      <input name="id" /><br>
+  Hour      <input name="hour" /><br>
   
-  Name     <input name="name" /><br>
+  Date     <input name="date" /><br>
   
-  Rate     <input name="rate" /><br>
+  Version     <input name="version" /><br>
   
-  Type     <input name="type" /><br>
-  
-  Actors   <input name="actor" /><br>
-  
-  Producer <input name="producer" /><br>
-  
-  Length   <input name="length"/><br>
-  
-  Country  <input name="country"><br>
-  
-  On_sreen <input name="on_screen_date"><br>
-  
-  Language <input name="language"><br>
-  
-  
-  <img id="preview" />
-    <br />
-    <input type="file" name="file" id="imgFile" onchange="imgPreview(this)" />
-    <br/>
-    <!-- <input type="button" id="btnUpload" value="ÉÏ´«" onclick="upload()" /><div id="progress" style="width:200px;height:24px;"></div> -->
-    <p id="showimg"></p>
-   
-  Description:
-  <TEXTAREA NAME="description" COLS=40 ROWS=6></TEXTAREA>
-  <br/>
   <input type="submit" value="Submit" />
   </form>
 </body>

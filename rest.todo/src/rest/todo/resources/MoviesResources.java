@@ -48,6 +48,29 @@ public class MoviesResources {
 	    return "<html>" + movies + "</html>"; 
 	  }
 	  
+	  @Path("/dropdown")
+	  @GET
+	  @Produces(MediaType.TEXT_HTML)
+	  public String getCinemasDropdown() {
+	    List<Movie> movies = new ArrayList<Movie>(){
+			@Override
+			public
+			String toString() {
+				String str = "<select name=\"movie_id\">";
+				for(Movie movie : this) {
+					str+="<option value=\"" + movie.getId() + "\">";
+					str+=movie.getName();
+					str+="</option>";
+				}
+				str+="</select>";
+								
+				return str;
+			}
+		};
+	    movies.addAll(TodoDao.instance.getMovies());
+	    return "" + movies; 
+	  }
+	  
 	  
 	  // Defines that the next path parameter after todos is
 	  // treated as a parameter and passed to the TodoResources
@@ -71,13 +94,15 @@ public class MoviesResources {
 			};
 		  	//debug:
 //				//System.out.println("city:"+city);
+			
 			for(Movie movie : TodoDao.instance.getMovies()) {
 				if(movie==null)
 					throw new RuntimeException("Get: Movie with " + name +  " not found");
-				if(movie.getName().equals(name) ) {
+				if(movie.getName().contains(name) ) {
 					list.add(movie);
 				}
 			}
+			
 	    return "<html>" + list + "</html>";
 	  }
 	  

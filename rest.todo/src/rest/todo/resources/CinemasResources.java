@@ -84,7 +84,7 @@ public class CinemasResources {
 			@Override
 			public
 			String toString() {
-				String str = "<select>";
+				String str = "<select name=\"cinema_id\">";
 				for(Cinema cinema : this) {
 					str+="<option value=\"" + cinema.getId() + "\">";
 					str+=cinema.getName();

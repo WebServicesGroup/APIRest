@@ -87,7 +87,7 @@ public class SessionsResources {
 	    TodoDao.instance.getSessions().add(session);
 	    
 	    // TODO when changes.
-	    servletResponse.sendRedirect("../../create_sessions.html");
+	    servletResponse.sendRedirect("../../create_session.html");
 	  }
 	  
 	  
