@@ -16,11 +16,14 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import rest.todo.dao.TodoDao;
 import rest.todo.model.Cinema;
 import rest.todo.model.Todo;
+
+import com.sun.jersey.api.view.Viewable;
 
 //Will map the resource to the URL todos
 @Path("/cinemas")
@@ -70,8 +73,33 @@ public class CinemasResources {
 			}
 		};
 	    cinemas.addAll(TodoDao.instance.getCinemas().values());
-	    return "<html>" + cinemas + "</html>"; 
+	    return "" + cinemas; 
 	  }
+	  
+	  @Path("/dropdown")
+	  @GET
+	  @Produces(MediaType.TEXT_HTML)
+	  public String getCinemasDropdown() {
+	    List<Cinema> cinemas = new ArrayList<Cinema>(){
+			@Override
+			public
+			String toString() {
+				String str = "<select>";
+				for(Cinema cinema : this) {
+					str+="<option value=\"" + cinema.getId() + "\">";
+					str+=cinema.getName();
+					str+="</option>";
+				}
+				str+="</select>";
+								
+				return str;
+			}
+		};
+	    cinemas.addAll(TodoDao.instance.getCinemas().values());
+	    return "" + cinemas; 
+	  }
+	  
+	  
 	  
 	  
 	  
