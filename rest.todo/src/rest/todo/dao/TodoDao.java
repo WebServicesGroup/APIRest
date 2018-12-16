@@ -23,19 +23,7 @@ public enum TodoDao {
   
   private ArrayList<Session> contentSession = new ArrayList<Session>();
   
-  private ArrayList<Movie> contentMovie = new ArrayList<Movie>();
   
-  // TODO CHANGER LES HASHMAP EN ARRAYLIST
-  private ArrayList<Movie> contentMovie = new ArrayList<Movie>();
-  
-  // TODO CHANGER LES HASHMAP EN ARRAYLIST
-  private ArrayList<Movie> contentMovie = new ArrayList<Movie>();
-  
-  // TODO CHANGER LES HASHMAP EN ARRAYLIST
-  private ArrayList<Movie> contentMovie = new ArrayList<Movie>();
-  
-  // TODO CHANGER LES HASHMAP EN ARRAYLIST
-  private ArrayList<Movie> contentMovie = new ArrayList<Movie>();
   
   // TODO CHANGER LES HASHMAP EN ARRAYLIST
   private ArrayList<Movie> contentMovie = new ArrayList<Movie>();
@@ -77,6 +65,10 @@ public enum TodoDao {
   
   public ArrayList<Session> getSessions(){
 	  return contentSession;
+  }
+  
+  public ArrayList<Movie> getMovies(){
+	  return contentMovie;
   }
 	  
 } 
