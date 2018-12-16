@@ -50,11 +50,11 @@ public enum TodoDao {
     contentCinema.put(cinema2.getId(), cinema2);
     contentCinema.put(cinema3.getId(), cinema3);
     
-    Session session = new Session(0,0,"10:20", "jeudi", "vf");
+    Session session = new Session(0,0,"10:00", "2018-12-20", "vf");
     contentSession.put(session.getId(),session);
     
     Movie movie = new Movie("Le Roi Lion", 5, "animation", "leonardo", "Clint Eastwood", 120,
-    		"France", "06/12/2018", "Français", "Blablabla" , "https://disney-planet.fr/wp-content/uploads/2015/01/Illustration-Le-Roi-Lion-Faux-Raccords-02.jpg");
+    		"France", "2018-12-06", "Français", "Blablabla" , "https://disney-planet.fr/wp-content/uploads/2015/01/Illustration-Le-Roi-Lion-Faux-Raccords-02.jpg");
     contentMovie.put(movie.getId(),movie);
     
     
