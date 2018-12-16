@@ -24,12 +24,14 @@
 		  <div id="movies"></div>
 		</div>
 	</div>
+	
+	<input type="button" value="Login" onclick="window.location.href='login.html'" />
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	 <script>
-		$(document).ready(function(){
-			$("#movies").load("../rest.todo/rest/movies/");
+	 	$.get( "../rest.todo/rest/movies/", function( data ) {
+		 $("#movies").html( data );
 		});
 	</script>
 </body>

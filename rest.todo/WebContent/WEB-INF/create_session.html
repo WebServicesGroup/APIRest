@@ -16,10 +16,12 @@
 	 
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	 <script>
-		$(document).ready(function(){
-			$("#dropdownMovies").load("../movies/dropdown");
-		    $("#dropdownCinemas").load("../cinemas/dropdown");
-		});
+		$.get( "../movies/dropdown", function( data ) {
+			 $("#dropdownMovies").html( data );
+			});
+		$.get( "../cinemas/dropdown", function( data ) {
+			 $("#dropdownCinemas").html( data );
+			});
 	</script>
 
 
