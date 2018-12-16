@@ -10,6 +10,7 @@ import rest.todo.model.Cinema;
 import rest.todo.model.Session;
 import rest.todo.model.Movie;
 import rest.todo.model.Todo;
+import rest.todo.model.User;
 
 
 public enum TodoDao {
@@ -27,6 +28,9 @@ public enum TodoDao {
   
   // TODO CHANGER LES HASHMAP EN ARRAYLIST
   private ArrayList<Movie> contentMovie = new ArrayList<Movie>();
+  
+  
+  private ArrayList<User> userList = new ArrayList<User>();
   
   // TODO CHANGER LES HASHMAP EN ARRAYLIST
   private TodoDao() {
@@ -53,6 +57,8 @@ public enum TodoDao {
     
     contentSession.add(session);
     
+    User user = new User("admin","admin");
+    userList.add(user);    
   }
   
   public Map<String, Todo> getModel(){
@@ -69,6 +75,10 @@ public enum TodoDao {
   
   public ArrayList<Movie> getMovies(){
 	  return contentMovie;
+  }
+  
+  public ArrayList<User> getUsers(){
+	  return userList;
   }
 	  
 } 
