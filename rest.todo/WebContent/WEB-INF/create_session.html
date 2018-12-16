@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>Insert title here</title>
 </head>
 <body>
@@ -16,12 +16,17 @@
 	 
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	 <script>
-		$.get( "../movies/dropdown", function( data ) {
-			 $("#dropdownMovies").html( data );
-			});
-		$.get( "../cinemas/dropdown", function( data ) {
-			 $("#dropdownCinemas").html( data );
-			});
+	    $( document ).ready(function() { 
+	        console.log( "document loaded" );
+	        
+	        $.get( "../movies/dropdown", function( data ) {
+				 $("#dropdownMovies").html( data );
+				});
+			$.get( "../cinemas/dropdown", function( data ) {
+				 $("#dropdownCinemas").html( data );
+				});
+	    });
+		
 	</script>
 
 

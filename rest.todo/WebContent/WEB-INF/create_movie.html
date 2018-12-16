@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head>
+ 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>Form to create a new resource</title>
   <style type="text/css">
             #preview {
@@ -36,7 +37,7 @@ function imgPreview(fileDom){
     //Get file
     var file = fileDom.files[0];
     var imageType = /^image\//;
-    //是否是图片
+    //脢脟路帽脢脟脥录脝卢
     if (!imageType.test(file.type)) {
         alert("Please select image!");
         return;
@@ -91,7 +92,7 @@ function imgPreview(fileDom){
     <br />
     <input type="file" name="file" id="imgFile" onchange="imgPreview(this)" />
     <br/>
-    <!-- <input type="button" id="btnUpload" value="上传" onclick="upload()" /><div id="progress" style="width:200px;height:24px;"></div> -->
+    <!-- <input type="button" id="btnUpload" value="脡脧麓芦" onclick="upload()" /><div id="progress" style="width:200px;height:24px;"></div> -->
     <p id="showimg"></p>
    
   Description:

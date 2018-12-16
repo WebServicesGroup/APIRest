@@ -20,14 +20,14 @@ public enum TodoDao {
 	
   private Map<String, Todo> contentProvider = new HashMap<String, Todo>();
   
-  private Map<String, Cinema> contentCinema = new HashMap<String, Cinema>();
+  private Map<Integer, Cinema> contentCinema = new HashMap<Integer, Cinema>();
   
-  private ArrayList<Session> contentSession = new ArrayList<Session>();
+  private Map<Integer,Session> contentSession = new HashMap<Integer,Session>();
   
   
   
   // TODO CHANGER LES HASHMAP EN ARRAYLIST
-  private ArrayList<Movie> contentMovie = new ArrayList<Movie>();
+  private Map<Integer, Movie> contentMovie = new HashMap<Integer,Movie>();
   
   
   private ArrayList<User> userList = new ArrayList<User>();
@@ -46,16 +46,18 @@ public enum TodoDao {
     Cinema cinema2 = new Cinema("test2", "Paris");
     Cinema cinema3 = new Cinema("test3", "Lyon");
     
-    contentCinema.put("0", cinema);
-    contentCinema.put("1", cinema2);
-    contentCinema.put("2", cinema3);
+    contentCinema.put(cinema.getId(), cinema);
+    contentCinema.put(cinema2.getId(), cinema2);
+    contentCinema.put(cinema3.getId(), cinema3);
     
-    Session session = new Session(1,1,"10:20", "jeudi", "vf");
+    Session session = new Session(0,0,"10:20", "jeudi", "vf");
+    contentSession.put(session.getId(),session);
+    
     Movie movie = new Movie("Le Roi Lion", 5, "animation", "leonardo", "Clint Eastwood", 120,
     		"France", "06/12/2018", "Français", "Blablabla" , "https://disney-planet.fr/wp-content/uploads/2015/01/Illustration-Le-Roi-Lion-Faux-Raccords-02.jpg");
-    contentMovie.add(movie);
+    contentMovie.put(movie.getId(),movie);
     
-    contentSession.add(session);
+    
     
     User user = new User("admin","admin");
     userList.add(user);    
@@ -65,15 +67,15 @@ public enum TodoDao {
     return contentProvider;
   }
   
-  public Map<String, Cinema> getCinemas(){
+  public Map<Integer, Cinema> getCinemas(){
 	return contentCinema;
   }
   
-  public ArrayList<Session> getSessions(){
+  public Map<Integer,Session> getSessions(){
 	  return contentSession;
   }
   
-  public ArrayList<Movie> getMovies(){
+  public Map<Integer,Movie> getMovies(){
 	  return contentMovie;
   }
   

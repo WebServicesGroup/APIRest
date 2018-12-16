@@ -120,12 +120,17 @@ public class Movie {
 	}
 	
 	public Movie() {}
+	
 	@Override
 	public String toString() {
-		return "Movie [id=" + id + ", name=" + name + ", rate=" + rate + ", type=" + type + ", actors=" + actors
-				+ ", producers=" + producers + ", length=" + length + ", country=" + country + ", onScreenDate="
-				+ onScreenDate + ", language=" + language + ", shortDescription=" + shortDescription + ", image="
-				+ image + "]";
+		return "Movie " + name + ", rate=" + rate + ", type=" + type;
+	}
+	
+	public String allTheInfos() {
+		return "<h1>Movie</h1>" + name + "<br>Rate " + rate + "<br>Type " + type + "<br>Actors " + actors
+				+ "<br>Producers " + producers + "<br>Length " + length + "<br> Country " + country + "<br>On screen date "
+				+ onScreenDate + "<br>Language " + language + "<br>Short description:<br>" + shortDescription + "<br>Image "
+				+ image;
 	}
 	
 	

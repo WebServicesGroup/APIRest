@@ -39,7 +39,7 @@ public class Cinema {
 	public Cinema() {}
 	@Override
 	public String toString() {
-		return "<p>" + name + " in" + city + "</p>";
+		return  "Cinema " + name + " in " + city;
 	}
 	
 	
