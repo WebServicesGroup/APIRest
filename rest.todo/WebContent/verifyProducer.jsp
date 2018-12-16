@@ -8,8 +8,8 @@
    String password=request.getParameter("pwd");
    if ("admin".equals(username) && "admin".equals(password))
    {
-	   session.setAttribute("loginUser",username);
-	   response.sendRedirect("http://localhost:8080/rest.todo/producerTodo.html");
+	   session.setAttribute("loginUser",username); //if username is needed in next page
+	   response.sendRedirect("../rest.todo/producerTodo.html");
    }else{
 	   //response.sendRedirect("");
 	   request.setAttribute("error","Wrong! Try again!");

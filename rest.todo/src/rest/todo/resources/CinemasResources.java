@@ -1,5 +1,12 @@
 package rest.todo.resources;
 
+import java.sql.Connection;   //导入所需要的包
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -136,6 +143,67 @@ public class CinemasResources {
 	  }
 	  
 	  
-	  
+	  @GET
+	  @Path("/producerCinema")
+	  @Produces(MediaType.TEXT_HTML)
+	  public String producerCinemasHTML() {
+		  
+		   //collect data from Database
+		    Connection con;
+			String driver = "com.mysql.jdbc.Driver";
+			String url = "jdbc:mysql://localhost:3306/hellocine?autoReconnect=true&useSSL=false";
+			String user ="root";
+			String password = "";
+			List<Cinema> cinemaList = new ArrayList<Cinema>(){
+				@Override
+				public
+				String toString() {
+					String str = "";
+					for(Cinema cinema : this) {
+						str+=cinema;
+					}
+					return str;
+				}
+			};
+			
+			//use the data from database
+			try {
+				 //Load driver
+				 Class.forName(driver);
+				 //Connect to the MySQL database! !
+				 con = DriverManager.getConnection(url,user,password);
+		         
+				 //create statement object to execute SQL script
+				 Statement statement = con.createStatement();
+				 String sql = "select * from cinema";
+				 ResultSet rs = statement.executeQuery(sql); //ResultSet Class used to store the data you get from database
+				 
+				  while (rs.next()) {
+					  Cinema cn = new Cinema();
+					  cn.setId(rs.getInt("id"));
+					  cn.setName(rs.getString("name"));
+					  cn.setCity(rs.getString("address"));
+					  cinemaList.add(cn);
+				  }
+				  rs.close();
+				  con.close();
+			
+		    //driver Exception & connection Exception
+			}catch(ClassNotFoundException e) {
+				System.out.println("Sorry,can`t find the Driver!"); 
+				e.printStackTrace(); 
+			}catch(SQLException e) {
+				 e.printStackTrace();  
+			}catch (Exception e) {
+				 e.printStackTrace();
+			}finally{
+				//System.out.println("Success access to Database！！");
+			}
+	   
+	    return "<html>" + "This is all cinemas in database!!<br>" + cinemaList + "If you want to create new cinema, click " 
+	    + "<form method=\"get\" action=\"../../create_cinema.html\">\n" + 
+	    "    <button type=\"submit\">AddCinema</button>\n" + 
+	    " </form>" + "</html>"; 
+	  }
 	  
 }

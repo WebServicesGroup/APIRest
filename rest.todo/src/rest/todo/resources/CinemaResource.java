@@ -27,6 +27,7 @@ public class CinemaResource {
   UriInfo uriInfo;
   @Context
   Request request;
+  
   String city;
   public CinemaResource(UriInfo uriInfo, Request request, String city) {
     this.uriInfo = uriInfo;
