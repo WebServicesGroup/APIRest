@@ -1,9 +1,11 @@
 package rest.todo.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import rest.todo.model.Cinema;
+import rest.todo.model.Movie;
 import rest.todo.model.Todo;
 
 
@@ -16,6 +18,9 @@ public enum TodoDao {
   
   private Map<String, Cinema> contentCinema = new HashMap<String, Cinema>();
   
+  private ArrayList<Movie> contentMovie = new ArrayList<Movie>();
+  
+  // TODO CHANGER LES HASHMAP EN ARRAYLIST
   private TodoDao() {
     
     Todo todo = new Todo("1", "Learn REST");
@@ -33,7 +38,9 @@ public enum TodoDao {
     contentCinema.put("2", cinema2);
     contentCinema.put("3", cinema3);
     
-    
+    Movie movie = new Movie("Le Roi Lion", 5, "animation", "leonardo", "Clint Eastwood", 120,
+    		"France", "06/12/2018", "Français", "Blablabla" , "https://disney-planet.fr/wp-content/uploads/2015/01/Illustration-Le-Roi-Lion-Faux-Raccords-02.jpg");
+    contentMovie.add(movie);
     
   }
   
@@ -44,5 +51,9 @@ public enum TodoDao {
   public Map<String, Cinema> getCinemas(){
 	return contentCinema;
   }
-	  
+  
+  public ArrayList<Movie> getMovies(){
+	return contentMovie;
+  }
+  
 } 
