@@ -29,7 +29,7 @@ import rest.todo.model.Session;
 import rest.todo.model.Todo;
 
 import com.sun.jersey.api.view.Viewable;
-
+import rest.todo.model.*;
 //Will map the resource to the URL todos
 @Path("/cinemas")
 public class CinemasResources {
@@ -72,28 +72,9 @@ public class CinemasResources {
 		  if(cinema == null)
 			  return "<html>The cinema with this id does not exist</html>";
 		  
-		  ArrayList<Movie> movieList= new ArrayList<Movie>(){
-				@Override
-				public
-				String toString() {
-					String str = "";
-					for(Movie movie : this) {
-						if (movie != null) {
-							
-						
-						str+="<a href=\"http://localhost:8080/rest.todo/rest/movies/";
-						str+=movie.getId();
-						str+="\">";
-						str+=movie;
-						str+="</a><br>";
-						}
-					}
-					return str;
-				}
-			};
-		  
+		  ListMovies movieList= new ListMovies();
+		
 		  ArrayList<Session> sessionList = new ArrayList<Session>();
-		  
 		  
 		// search for the session with the cinema id
 		  for(Session session : TodoDao.instance.getSessions().values() ) {
@@ -122,21 +103,7 @@ public class CinemasResources {
 	  @GET
 	  @Produces(MediaType.TEXT_HTML)
 	  public String getCinemasHTML() {
-	    List<Cinema> cinemas = new ArrayList<Cinema>(){
-			@Override
-			public
-			String toString() {
-				String str = "";
-				for(Cinema cinema : this) {
-					str+="<a href=\"http://localhost:8080/rest.todo/rest/cinemas/";
-					str+=cinema.getId();
-					str+="\">";
-					str+=cinema;
-					str+="</a><br>";
-				}
-				return str;
-			}
-		};
+	    ListCinemas cinemas = new ListCinemas();
 	    cinemas.addAll(TodoDao.instance.getCinemas().values());
 	    return "" + cinemas; 
 	  }
@@ -165,10 +132,6 @@ public class CinemasResources {
 	    return "" + cinemas; 
 	  }
 	  
-	  
-	  
-	  
-	  
 	// Defines that the next path parameter after todos is
 	  // treated as a parameter and passed to the TodoResources
 	  // Allows to type http://localhost:8080/rest.todo/rest/todos/1
@@ -178,21 +141,7 @@ public class CinemasResources {
 	  @Produces(MediaType.TEXT_HTML)
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	  public String getCinemasFrom(@QueryParam("city") String city) {
-		  ArrayList<Cinema> list = new ArrayList<Cinema>(){
-				@Override
-				public
-				String toString() {
-					String str = "";
-					for(Cinema cinema : this) {
-						str+="<a href=\"http://localhost:8080/rest.todo/rest/cinemas/";
-						str+=cinema.getId();
-						str+="\">";
-						str+=cinema;
-						str+="</a><br>";
-					}
-					return str;
-				}
-			};
+		  ListCinemas list = new ListCinemas();
 			
 		  	//debug:
 //			//System.out.println("city:"+city);

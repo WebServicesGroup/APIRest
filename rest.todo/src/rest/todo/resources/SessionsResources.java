@@ -54,6 +54,7 @@ public class SessionsResources {
 	    List<Session> sessions = new ArrayList<Session>(){
 			@Override
 			public
+			// TODO 
 			String toString() {
 				String str = "";
 				for(Session session : this) {
@@ -65,8 +66,6 @@ public class SessionsResources {
 	    sessions.addAll(TodoDao.instance.getSessions().values());
 	    return "<html>" + sessions + "</html>"; 
 	  }
-	  
-	  
 	  
 	  
 	  // retuns the number of todos

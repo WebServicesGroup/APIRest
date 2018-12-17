@@ -23,6 +23,7 @@ import javax.ws.rs.core.UriInfo;
 
 import rest.todo.dao.TodoDao;
 import rest.todo.model.Cinema;
+import rest.todo.model.ListMovies;
 import rest.todo.model.Movie;
 import rest.todo.model.Session;
 
@@ -38,21 +39,7 @@ public class MoviesResources {
 	  @GET
 	  @Produces(MediaType.TEXT_HTML)
 	  public String getMoviesHTML() {
-	    ArrayList<Movie> movies = new ArrayList<Movie>(){
-			@Override
-			public
-			String toString() {
-				String str = "";
-				for(Movie movie : this) {
-					str+="<a href=\"http://localhost:8080/rest.todo/rest/movies/";
-					str+=movie.getId();
-					str+="\">";
-					str+=movie;
-					str+="</a><br>";
-				}
-				return str;
-			}
-		};
+	    ListMovies movies = new ListMovies();
 	    movies.addAll(TodoDao.instance.getMovies().values());
 	    return "" + movies; 
 	  }
@@ -70,6 +57,7 @@ public class MoviesResources {
 		  // the way to display the sessions
 		  ArrayList<Session> sessionList = new ArrayList<Session>() {
 				@Override
+				// TODO 
 				public
 				String toString() {
 					int count = 1;
@@ -136,21 +124,7 @@ public class MoviesResources {
 	  @Produces(MediaType.TEXT_HTML)
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	  public String getCinemasFrom(@QueryParam("name") String name) {
-		  ArrayList<Movie> list = new ArrayList<Movie>(){
-				@Override
-				public
-				String toString() {
-					String str = "";
-					for(Movie movie : this) {
-						str+="<a href=\"http://localhost:8080/rest.todo/rest/movies/";
-						str+=movie.getId();
-						str+="\">";
-						str+=movie;
-						str+="</a><br>";
-					}
-					return str;
-				}
-			};
+		  ListMovies list = new ListMovies();
 		  	//debug:
 //				//System.out.println("city:"+city);
 			
