@@ -2,6 +2,8 @@
 <html>
 
 <head>
+	<meta http-equiv="pragma" content="no-cache" />
+	<META HTTP-EQUIV="Expires" CONTENT="-1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -37,22 +39,24 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	 <script>
-	    $( document ).ready(function() {
-	    	console.log( "document loaded" );
+	    $( window ).ready(function() {
+	    	console.log( "window loaded" );
 	    	
-	    	$.get( "../rest.todo/rest/movies/", function( data ) {
+	    	$.get( "http://localhost:8080/rest.todo/rest/movies/", function( data ) {
 		   		 $("#movieList").html( data );
 		   		}); 
-	    	$.get( "../rest.todo/rest/cinemas/", function( data ) {
+	    	$.get( "http://localhost:8080/rest.todo/rest/cinemas/", function( data ) {
 		   		 $("#cinemaList").html( data );
 		   		}); 
 	   		
-	    	$.get( "searchCinemaByCity.html", function( data ) {
+	    	$.get( "http://localhost:8080/rest.todo/searchCinemaByCity.html", function( data ) {
 		   		 $("#searchCinemaByCity").html( data );
 		   		}); 
-	    	$.get( "searchMovieByName.html", function( data ) {
+	    	$.get( "http://localhost:8080/rest.todo/searchMovieByName.html", function( data ) {
 		   		 $("#searchMovieByName").html( data );
-		   		}); 
+		   		});
+
+	    	 
 	    });
 	 	
 	</script>
