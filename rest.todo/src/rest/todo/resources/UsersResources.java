@@ -57,6 +57,25 @@ public class UsersResources {
     }
   }
   
+  @Path("deleteCinema")
+  @POST
+  @Produces(MediaType.TEXT_HTML)
+  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+  public void redirectToDeleteCinema(@FormParam("connected") String connected,
+      @Context HttpServletResponse servletResponse,
+      @Context HttpServletRequest request) throws IOException, ServletException {
+	  System.out.println("connected : " + connected);
+    
+    if(connected.equals("true")) {
+	    // TODO when changes.
+    	request.getRequestDispatcher("/WEB-INF/delete_cinema.html").forward(request, servletResponse); 
+	    //servletResponse.sendRedirect("../WEB-INF/administration.html");
+    }
+    else {
+    	servletResponse.sendRedirect("../login.html");
+    }
+  }
+  
   @Path("createMovie")
   @POST
   @Produces(MediaType.TEXT_HTML)
