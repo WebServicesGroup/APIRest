@@ -9,7 +9,6 @@ import java.sql.Statement;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -30,8 +29,6 @@ import javax.ws.rs.core.UriInfo;
 
 import rest.todo.dao.TodoDao;
 import rest.todo.model.Cinema;
-import rest.todo.model.Movie;
-import rest.todo.model.Session;
 import rest.todo.model.Todo;
 
 import com.sun.jersey.api.view.Viewable;
@@ -68,62 +65,6 @@ public class CinemasResources {
 	  }
 	  */
 	  
-	  @GET
-	  @Produces(MediaType.TEXT_HTML)
-	  @Path("{id}")
-	  public String getCinema(@PathParam("id") int id) {
-		  Cinema cinema = TodoDao.instance.getCinemas().get(id);
-		  
-		// if the there is no cinema with the id entered
-		  if(cinema == null)
-			  return "<html>The cinema with this id does not exist</html>";
-		  
-		  ArrayList<Movie> movieList= new ArrayList<Movie>(){
-				@Override
-				public
-				String toString() {
-					String str = "";
-					for(Movie movie : this) {
-						if (movie != null) {
-							
-						
-						str+="<a href=\"http://localhost:8080/rest.todo/rest/movies/";
-						str+=movie.getId();
-						str+="\">";
-						str+=movie;
-						str+="</a><br>";
-						}
-					}
-					return str;
-				}
-			};
-		  
-		  ArrayList<Session> sessionList = new ArrayList<Session>();
-		  
-		  
-		// search for the session with the cinema id
-		  for(Session session : TodoDao.instance.getSessions().values() ) {
-			  if(session.getCinema_id() == cinema.getId()) {
-				  sessionList.add(session);
-			  }
-		  }
-		  
-		  
-		  // get the UNIQUE movies
-		  HashSet<Movie> hashSet = new HashSet<Movie>();
-		  
-		  for(Session session : sessionList)
-			  hashSet.add(TodoDao.instance.getMovies().get(session.getMovie_id()));
-		  
-		  // get the unique movies in the movie list
-		  movieList.addAll(hashSet);
-		  
-		  if(cinema != null)
-			  return "<html><h1>" + cinema + "</h1><h2>" + "All the movies in this cinema</h2>" +  movieList + "</html>";
-		  else
-			  return "<html>The cinema with this id " +  cinema.getId() + " doesn\'t exist</html>";
-	  }
-	  
 	  
 	  @GET
 	  @Produces(MediaType.TEXT_HTML)
@@ -146,7 +87,6 @@ public class CinemasResources {
 	    cinemas.addAll(TodoDao.instance.getCinemas().values());
 	    return "" + cinemas; 
 	  }
-	  
 	  
 	  @Path("/dropdown")
 	  @GET
@@ -197,7 +137,6 @@ public class CinemasResources {
 					return str;
 				}
 			};
-			
 		  	//debug:
 //			//System.out.println("city:"+city);
 			for(Cinema cinema : TodoDao.instance.getCinemas().values()) {
@@ -226,8 +165,6 @@ public class CinemasResources {
 	    return String.valueOf(count);
 	  }
 	  
-
-	  
 	  
 	  @POST
 	  @Path("/createCinema")
@@ -243,12 +180,9 @@ public class CinemasResources {
 	    TodoDao.instance.getCinemas().put(cinema.getId(), cinema);
 	    
 	    // TODO when changes.
-<<<<<<< HEAD
 	    servletResponse.sendRedirect("../../create_cinema.html");
-=======
 	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse);
 	    //servletResponse.sendRedirect("../../login.html");
->>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest.git
 	  }
 	  
 	  

@@ -53,26 +53,17 @@ public enum TodoDao {
     Cinema cinema2 = new Cinema("test2", "Paris");
     Cinema cinema3 = new Cinema("test3", "Lyon");
     
-<<<<<<< HEAD
-    contentCinema.put("1", cinema);
-    contentCinema.put("2", cinema2);
-    contentCinema.put("3", cinema3);
-=======
     contentCinema.put(cinema.getId(), cinema);
     contentCinema.put(cinema2.getId(), cinema2);
     contentCinema.put(cinema3.getId(), cinema3);
->>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest.git
     
-<<<<<<< HEAD
- 
-=======
     Session session = new Session(0,0,"10:00", "2018-12-20", "vf");
     contentSession.put(session.getId(),session);
     
+ 
     Movie movie = new Movie("Le Roi Lion", 5, "animation", "leonardo", "Clint Eastwood", 120,
     		"France", "2018-12-06", "Français", "Blablabla" , "https://disney-planet.fr/wp-content/uploads/2015/01/Illustration-Le-Roi-Lion-Faux-Raccords-02.jpg");
     contentMovie.put(movie.getId(),movie);
->>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest.git
     
     
     

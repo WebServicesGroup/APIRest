@@ -39,11 +39,8 @@ public class Cinema {
 	public Cinema() {}
 	@Override
 	public String toString() {
-<<<<<<< HEAD
 		return "<p>" + id + " " +name + " in " + city + "</p>";
-=======
-		return  "Cinema " + name + " in " + city;
->>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest.git
+		//return  "Cinema " + name + " in " + city;
 	}
 	
 	
