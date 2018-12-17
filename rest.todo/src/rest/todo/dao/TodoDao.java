@@ -1,5 +1,11 @@
 package rest.todo.dao;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.awt.List;
 import java.util.ArrayList;
 import java.util.ArrayList;
@@ -42,6 +48,7 @@ public enum TodoDao {
     todo.setDescription("Read complete http://www.efrei.fr");
     contentProvider.put("2", todo);
     
+    
     Cinema cinema = new Cinema("test", "Paris");
     Cinema cinema2 = new Cinema("test2", "Paris");
     Cinema cinema3 = new Cinema("test3", "Lyon");
@@ -53,6 +60,7 @@ public enum TodoDao {
     Session session = new Session(0,0,"10:00", "2018-12-20", "vf");
     contentSession.put(session.getId(),session);
     
+ 
     Movie movie = new Movie("Le Roi Lion", 5, "animation", "leonardo", "Clint Eastwood", 120,
     		"France", "2018-12-06", "Français", "Blablabla" , "https://disney-planet.fr/wp-content/uploads/2015/01/Illustration-Le-Roi-Lion-Faux-Raccords-02.jpg");
     contentMovie.put(movie.getId(),movie);

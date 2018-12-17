@@ -8,6 +8,7 @@ public class Session {
 	private String hour;
 	private String date;
 	private String version;
+	
 	public int getId() {
 		return id;
 	}

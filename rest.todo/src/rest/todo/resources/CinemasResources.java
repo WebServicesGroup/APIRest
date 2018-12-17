@@ -1,5 +1,12 @@
 package rest.todo.resources;
 
+import java.sql.Connection;   //导入所需要的包
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -108,7 +115,6 @@ public class CinemasResources {
 	    return "" + cinemas; 
 	  }
 	  
-	  
 	  @Path("/dropdown")
 	  @GET
 	  @Produces(MediaType.TEXT_HTML)
@@ -131,6 +137,9 @@ public class CinemasResources {
 	    cinemas.addAll(TodoDao.instance.getCinemas().values());
 	    return "" + cinemas; 
 	  }
+	  
+
+	  
 	  
 	// Defines that the next path parameter after todos is
 	  // treated as a parameter and passed to the TodoResources
@@ -188,9 +197,12 @@ public class CinemasResources {
 	    TodoDao.instance.getCinemas().put(cinema.getId(), cinema);
 	    
 	    // TODO when changes.
+
+	    servletResponse.sendRedirect("../../create_cinema.html");
+	    
 	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse);
 	    //servletResponse.sendRedirect("../../login.html");
-	  }
+}
 	  
 	  
 	  
