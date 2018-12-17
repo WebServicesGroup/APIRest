@@ -138,6 +138,7 @@ public class CinemasResources {
 			}
 		};
 	    cinemas.addAll(TodoDao.instance.getCinemas().values());
+	    //System.out.println(cinemas);
 	    return "" + cinemas; 
 	  }
 	  
@@ -240,6 +241,62 @@ public class CinemasResources {
 	    //servletResponse.sendRedirect("../../login.html");
 }
 	  
+	  @POST
+	  @Path("/deleteCinema")
+	  @Produces(MediaType.TEXT_HTML)
+	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	  public void newCinema(@FormParam("cinema_id") int cinemaId,
+	      @Context HttpServletResponse servletResponse,
+	      @Context HttpServletRequest request) throws IOException, ServletException {
+		  System.out.println("cinema_id : " + cinemaId);
+	   
+		//collect data from Database
+		    Connection con;
+			String driver = "com.mysql.jdbc.Driver";
+			String url = "jdbc:mysql://localhost:3306/hellocine?autoReconnect=true&useSSL=false";
+			String user ="root";
+			String password = "";
+			
+			//begin to delete
+			try {
+				 Class.forName(driver);
+				 con = DriverManager.getConnection(url,user,password);
+				 PreparedStatement ps=con.prepareStatement("delete from cinema where id = ?");
+				  ps.setInt(1,cinemaId);
+				  ps.executeUpdate();
+				  ps.close();
+				  con.close();
+			
+		    //driver Exception & connection Exception
+			}catch(ClassNotFoundException e) {
+				System.out.println("Sorry,can`t find the Driver!"); 
+				e.printStackTrace(); 
+			}catch(SQLException e) {
+				 e.printStackTrace();  
+			}catch (Exception e) {
+				 e.printStackTrace();
+			}finally{
+				//System.out.println("Success access to Database£¡£¡");
+			}
+		  
+	    /*
+		for(Session session : TodoDao.instance.getSessions().values()) {
+			if(session==null)
+				throw new RuntimeException("Get: session with " + movieId +  " not found");
+			if(session.getMovie_id() == (movieId) ) {
+				TodoDao.instance.getMovies().remove(session);
+			}
+		}
+		 TodoDao.instance.getMovies().remove(movieId);
+	    // TODO when changes.
+		 */
+	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse); 
+	    
+	    //servletResponse.sendRedirect("../../create_session.html");
+	  	//debug:
+     	//System.out.println("city:"+city);
+		
+	  }
 	  
 	  
 	  
