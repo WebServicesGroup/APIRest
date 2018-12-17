@@ -1,6 +1,6 @@
 package rest.todo.resources;
 
-import java.sql.Connection;   //导入所需要的包
+import java.sql.Connection;   
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
