@@ -203,7 +203,7 @@ public class CinemasResources {
 		String driver = "com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://localhost:3306/hellocine?autoReconnect=true&useSSL=false";
 		String user ="root";
-		String password = "";
+		String password = "Claire97";
 		
 		//begin adding
 		try {
