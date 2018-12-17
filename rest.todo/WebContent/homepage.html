@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <title>Homepage</title>
+</head>
+
+	 <style>
+	 container {align:center;}
+	 .clearfix {
+	  overflow: auto;
+	}
+	 </style>
+
+<body>
+
+	<div class='container'>
+		<div id="searchCinemaByCity">searchByCity</div>
+		<div id="searchMovieByName">searchMovieByName</div>
+		<h1>Movies</h1>
+		<div class="clearfix">
+		  <div id="movieList">MovieList</div>
+		</div>
+		<h1>Cinemas</h1>
+		<div class="clearfix">
+		  <div id="cinemaList">CinemaList</div>
+		</div>
+	</div>
+	
+	<input type="button" value="Login" onclick="window.location.href='login.html'" />
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	 <script>
+	    $( document ).ready(function() {
+	    	console.log( "document loaded" );
+	    	
+	    	$.get( "../rest.todo/rest/movies/", function( data ) {
+		   		 $("#movieList").html( data );
+		   		}); 
+	    	$.get( "../rest.todo/rest/cinemas/", function( data ) {
+		   		 $("#cinemaList").html( data );
+		   		}); 
+	   		
+	    	$.get( "searchCinemaByCity.html", function( data ) {
+		   		 $("#searchCinemaByCity").html( data );
+		   		}); 
+	    	$.get( "searchMovieByName.html", function( data ) {
+		   		 $("#searchMovieByName").html( data );
+		   		}); 
+	    });
+	 	
+	</script>
+</body>
+</html>

@@ -38,6 +38,18 @@ public class SessionsResources {
 	  
 	  @GET
 	  @Produces(MediaType.TEXT_HTML)
+	  @Path("{id}")
+	  public String getSession(@PathParam("id") int id) {
+		  Session session = TodoDao.instance.getSessions().get(id);
+		  if(session != null)
+			  return "<html>" + session + "</html>";
+		  else
+			  return "<html>The session with this id" + session.getId() +" doesn\'t exist</html>";
+	  }
+	  
+	  
+	  @GET
+	  @Produces(MediaType.TEXT_HTML)
 	  public String getCinemasHTML() {
 	    List<Session> sessions = new ArrayList<Session>(){
 			@Override
@@ -50,7 +62,7 @@ public class SessionsResources {
 				return str;
 			}
 		};
-	    sessions.addAll(TodoDao.instance.getSessions());
+	    sessions.addAll(TodoDao.instance.getSessions().values());
 	    return "<html>" + sessions + "</html>"; 
 	  }
 	  
@@ -87,7 +99,7 @@ public class SessionsResources {
 		  System.out.println("date : " + date);
 		  System.out.println("version : " + version);
 	    Session session = new Session(movieId,cinemaId,hour,date,version);
-	    TodoDao.instance.getSessions().add(session);
+	    TodoDao.instance.getSessions().put(session.getId(),session);
 	    
 	    // TODO when changes.
 	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse); 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>Insert title here</title>
 </head>
 <body>
@@ -16,20 +16,43 @@
 	 
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	 <script>
-		$.get( "../movies/dropdown", function( data ) {
-			 $("#dropdownMovies").html( data );
-			});
-		$.get( "../cinemas/dropdown", function( data ) {
-			 $("#dropdownCinemas").html( data );
-			});
+	    $( document ).ready(function() { 
+	        console.log( "document loaded" );
+	        
+	        $.get( "../movies/dropdown", function( data ) {
+				 $("#dropdownMovies").html( data );
+				});
+			$.get( "../cinemas/dropdown", function( data ) {
+				 $("#dropdownCinemas").html( data );
+				});
+	    });
+		
 	</script>
 
 
-  Hour      <input name="hour" /><br>
+  Hour
   
-  Date     <input name="date" /><br>
+   <select name="hour">
+  <option value="10:00">10:00</option>
+  <option value="12:00">12:00</option>
+  <option value="14:00">14:00</option>
+  <option value="16:00">16:00</option>
+  <option value="18:00">18:00</option>
+  <option value="20:00">20:00</option>
+  <option value="22:00">22:00</option>
+	</select> 
   
-  Version     <input name="version" /><br>
+  <br>
+  Date     <input type="date" id="date" name="date"
+       value="2018-12-16"
+       min="2018-01-01" max="2018-12-31">
+       <br>
+  
+  
+  Version     <select name=version>
+  <option value="vf">vf</option>
+  <option value="vo">vo</option>
+	</select> <br>
   
   <input type="submit" value="Submit" />
   </form>
