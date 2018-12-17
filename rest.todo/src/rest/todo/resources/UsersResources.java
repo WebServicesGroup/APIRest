@@ -24,7 +24,6 @@ import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.JAXBElement;
 
 
-
 import rest.todo.dao.TodoDao;
 import rest.todo.model.Cinema;
 import rest.todo.model.Todo;

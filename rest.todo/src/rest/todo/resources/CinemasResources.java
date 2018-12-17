@@ -37,6 +37,7 @@ import rest.todo.model.Cinema;
 import rest.todo.model.Movie;
 import rest.todo.model.Session;
 import rest.todo.model.Todo;
+import rest.todo.utils.Constants;
 
 import com.sun.jersey.api.view.Viewable;
 import rest.todo.model.*;
@@ -200,10 +201,10 @@ public class CinemasResources {
 	    
 	  //collect data from Database
 	    Connection con;
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/hellocine?autoReconnect=true&useSSL=false";
-		String user ="root";
-		String password = "Claire97";
+		String driver = Constants.driver;
+		String url = Constants.url;
+		String user = Constants.user;
+		String password = Constants.password;
 		
 		//begin adding
 		try {
