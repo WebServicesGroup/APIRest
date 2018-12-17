@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -211,4 +212,35 @@ public class MoviesResources {
 	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse); 
 	    //servletResponse.sendRedirect("../../login.html");
 	  }	  
+	  
+	  
+	  @POST
+	  @Path("/deleteMovie")
+	  @Produces(MediaType.TEXT_HTML)
+	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	  public void newCinema(@FormParam("movie_id") int movieId,
+	      @Context HttpServletResponse servletResponse,
+	      @Context HttpServletRequest request) throws IOException, ServletException {
+		  System.out.println("movie_id : " + movieId);
+	   
+	    
+		for(Session session : TodoDao.instance.getSessions().values()) {
+			if(session==null)
+				throw new RuntimeException("Get: session with " + movieId +  " not found");
+			if(session.getMovie_id() == (movieId) ) {
+				TodoDao.instance.getMovies().remove(session);
+			}
+		}
+		
+		
+		 TodoDao.instance.getMovies().remove(movieId);
+	    // TODO when changes.
+	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse); 
+	    //servletResponse.sendRedirect("../../create_session.html");
+	    
+	    
+	  	//debug:
+//			//System.out.println("city:"+city);
+		
+	  }
 }
