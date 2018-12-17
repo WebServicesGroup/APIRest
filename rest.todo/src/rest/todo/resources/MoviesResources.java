@@ -1,6 +1,7 @@
 package rest.todo.resources;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -163,7 +164,7 @@ public class MoviesResources {
 			  @FormParam("producer") String producer,
 			  @FormParam("length") String length,
 			  @FormParam("country") String country,
-			  @FormParam("on_screen_date") String on_screen_date,
+			  @FormParam("on_screen_date") Date on_screen_date,
 			  @FormParam("language") String language,
 			  @FormParam("description") String description,
 	      @Context HttpServletResponse servletResponse,

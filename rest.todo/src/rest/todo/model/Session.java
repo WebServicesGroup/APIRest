@@ -1,12 +1,16 @@
 package rest.todo.model;
 
+
+import java.sql.Date;
+import java.sql.Time;
+
 public class Session {
 	private static int count = 0;
 	private int id;
 	private int movie_id;
 	private int cinema_id;
-	private String hour;
-	private String date;
+	private Time  hour;
+	private Date date;
 	private String version;
 	
 	public int getId() {
@@ -27,16 +31,16 @@ public class Session {
 	public void setCinema_id(int cinema_id) {
 		this.cinema_id = cinema_id;
 	}
-	public String getHour() {
+	public Time  getHour() {
 		return hour;
 	}
-	public void setHour(String hour) {
+	public void setHour(Time  hour) {
 		this.hour = hour;
 	}
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public String getVersion() {
@@ -45,7 +49,7 @@ public class Session {
 	public void setVersion(String version) {
 		this.version = version;
 	}
-	public Session( int movie_id, int cinema_id, String hour, String date, String version) {
+	public Session( int movie_id, int cinema_id, Time hour, Date date, String version) {
 		super();
 		this.id = count;
 		this.movie_id = movie_id;

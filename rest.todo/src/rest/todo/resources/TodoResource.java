@@ -30,8 +30,9 @@ public class TodoResource {
   }
   
   
-  
+  /*
   //Application integration     
+  
   @GET
   @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
   public Todo getTodo() {
@@ -50,6 +51,7 @@ public class TodoResource {
       throw new RuntimeException("Get: Todo with " + id +  " not found");
     return todo;
   }
+  
   
   @PUT
   @Consumes(MediaType.APPLICATION_XML)
@@ -76,6 +78,6 @@ public class TodoResource {
     return res;
   }
   
-  
+  */
 
 } 

@@ -2,6 +2,7 @@ package rest.todo.resources;
 
 import java.sql.Connection;   //导入所需要的包
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,8 +10,10 @@ import java.sql.Statement;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -194,11 +197,44 @@ public class CinemasResources {
 		  System.out.println("city : " + city);
 		  System.out.println("name : " + name);
 	    Cinema cinema = new Cinema(name, city);
-	    TodoDao.instance.getCinemas().put(cinema.getId(), cinema);
+	    
+	  //collect data from Database
+	    Connection con;
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://localhost:3306/hellocine?autoReconnect=true&useSSL=false";
+		String user ="root";
+		String password = "";
+		
+		//begin adding
+		try {
+			 //Load driver
+			 Class.forName(driver);
+			 //Connect to the MySQL database! !
+			 con = DriverManager.getConnection(url,user,password);
+	         
+			 PreparedStatement ps=con.prepareStatement("insert into cinema(name,address) values(?,?)");//创建一个Statement对象
+			  //ps.setInt(1,4);
+			  ps.setString(1,name);
+			  ps.setString(2,city);
+			  ps.executeUpdate();
+			 
+			  con.close();
+		
+	    //driver Exception & connection Exception
+		}catch(ClassNotFoundException e) {
+			System.out.println("Sorry,can`t find the Driver!"); 
+			e.printStackTrace(); 
+		}catch(SQLException e) {
+			 e.printStackTrace();  
+		}catch (Exception e) {
+			 e.printStackTrace();
+		}finally{
+			//System.out.println("Success access to Database！！");
+		}
 	    
 	    // TODO when changes.
 
-	    servletResponse.sendRedirect("../../create_cinema.html");
+	    //servletResponse.sendRedirect("../../create_cinema.html");
 	    
 	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse);
 	    //servletResponse.sendRedirect("../../login.html");

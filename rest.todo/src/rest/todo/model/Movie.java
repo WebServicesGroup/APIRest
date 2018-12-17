@@ -1,4 +1,6 @@
 package rest.todo.model;
+import java.sql.Date;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -12,7 +14,7 @@ public class Movie {
 	private String producers;
 	private int length;
 	private String country;
-	private String onScreenDate;
+	private Date onScreenDate;
 	private String language;
 	private String shortDescription;
 	private String image;
@@ -80,10 +82,10 @@ public class Movie {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public String getOnScreenDate() {
+	public Date getOnScreenDate() {
 		return onScreenDate;
 	}
-	public void setOnScreenDate(String onScreenDate) {
+	public void setOnScreenDate(Date onScreenDate) {
 		this.onScreenDate = onScreenDate;
 	}
 	public String getLanguage() {
@@ -102,7 +104,7 @@ public class Movie {
 	
 	
 	public Movie(String name, int rate, String type, String actors, String producers, int length,
-			String country, String onScreenDate, String language, String shortDescription, String image) {
+			String country, Date onScreenDate, String language, String shortDescription, String image) {
 		super();
 		this.id = count;
 		this.name = name;
