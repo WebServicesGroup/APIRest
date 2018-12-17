@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="../sessions/createSession" method="POST">
+
+<!-- (int id, int movie_id, int cinema_id, String hour, String date, String version) -->
+
+	Movies:<div id="dropdownMovies">MoviesDropDown</div>
+
+ 	Cinema:<div id="dropdownCinemas">CinemasDropDown</div>
+  
+	 
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	 <script>
+		$.get( "../movies/dropdown", function( data ) {
+			 $("#dropdownMovies").html( data );
+			});
+		$.get( "../cinemas/dropdown", function( data ) {
+			 $("#dropdownCinemas").html( data );
+			});
+	</script>
+
+
+  Hour      <input name="hour" /><br>
+  
+  Date     <input name="date" /><br>
+  
+  Version     <input name="version" /><br>
+  
+  <input type="submit" value="Submit" />
+  </form>
+</body>
+</html>

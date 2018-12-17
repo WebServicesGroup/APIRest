@@ -36,7 +36,7 @@ function imgPreview(fileDom){
     //Get file
     var file = fileDom.files[0];
     var imageType = /^image\//;
-    //Whether is image
+    // «∑Ò «Õº∆¨
     if (!imageType.test(file.type)) {
         alert("Please select image!");
         return;
@@ -65,9 +65,8 @@ function imgPreview(fileDom){
  </head>
  
 <body>
-  <form action="../rest.todo/rest/todos" method="POST">
+  <form action="../rest.todo/rest/movies/createMovie" method="POST">
   <pre>
-  ID       <input name="id" />
   
   Name     <input name="name" />
   

@@ -1,6 +1,9 @@
 package rest.todo.model;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class Movie {
+	private static int count = 0;
 	private int id;
 	private String name;
 	private int rate;
@@ -98,10 +101,10 @@ public class Movie {
 
 	
 	
-	public Movie(int id, String name, int rate, String type, String actors, String producers, int length,
+	public Movie(String name, int rate, String type, String actors, String producers, int length,
 			String country, String onScreenDate, String language, String shortDescription, String image) {
 		super();
-		this.id = id;
+		this.id = count;
 		this.name = name;
 		this.rate = rate;
 		this.type = type;
@@ -113,7 +116,9 @@ public class Movie {
 		this.language = language;
 		this.shortDescription = shortDescription;
 		this.image = image;
+		count++;
 	}
+	
 	public Movie() {}
 	@Override
 	public String toString() {

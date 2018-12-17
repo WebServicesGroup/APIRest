@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Form to create a new resource</title>
+  <style type="text/css">
+            #preview {
+                display: inline-block;
+                width: 2.56rem;
+                height: 2.56rem;
+                position: relative;
+                background-image: url(img/iconfont-tianjia.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            
+            #file {
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                position: absolute;
+                left: 0;
+                top: 0;
+                cursor: pointer;
+                z-index: 5;
+            }
+        </style>
+<script type="text/javascript">
+function imgPreview(fileDom){
+    //Verify wether it support FileReader
+    if (window.FileReader) {
+        var reader = new FileReader();
+    } else {
+        alert("Your device doesn't support preview image");
+    }
+
+    //Get file
+    var file = fileDom.files[0];
+    var imageType = /^image\//;
+    //是否是图片
+    if (!imageType.test(file.type)) {
+        alert("Please select image!");
+        return;
+    }
+    //Finish reading
+    reader.onload = function(e) {
+        //Get image dom
+        var img = document.getElementById("preview");
+        //Set the image URL as what you selected
+        img.src = e.target.result;
+
+        // ajax :upload image to display
+        $.post("upload_h5.php", {img: e.target.result}, function(ret) { 
+            if (ret.img!='') {  
+                alert('upload success');  
+                $('#showimg').html('<img src="' + ret.img + '">');  
+            } else {  
+                alert('upload fail');  
+            }
+        },'json');  
+    };
+    reader.readAsDataURL(file);
+
+}
+</script>
+ </head>
+ 
+<body>
+  <form action="../movies/createMovie" method="POST">
+  <pre>
+  
+  Name     <input name="name" />
+  
+  Rate     <input name="rate" />
+  
+  Type     <input name="type" />
+  
+  Actors   <input name="actor" />
+  
+  Producer <input name="producer" />
+  
+  Length   <input name="length"/>
+  
+  Country  <input name="country">
+  
+  On_sreen <input name="on_screen_date">
+  
+  Language <input name="language">
+  
+  </pre>
+  <img id="preview" />
+    <br />
+    <input type="file" name="file" id="imgFile" onchange="imgPreview(this)" />
+    <br/>
+    <!-- <input type="button" id="btnUpload" value="上传" onclick="upload()" /><div id="progress" style="width:200px;height:24px;"></div> -->
+    <p id="showimg"></p>
+   
+  Description:
+  <TEXTAREA NAME="description" COLS=40 ROWS=6></TEXTAREA>
+  <br/>
+  <input type="submit" value="Submit" />
+  </form>
+</body>
+</html> 

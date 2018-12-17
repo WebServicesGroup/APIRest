@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -28,6 +30,8 @@ import javax.ws.rs.core.UriInfo;
 import rest.todo.dao.TodoDao;
 import rest.todo.model.Cinema;
 import rest.todo.model.Todo;
+
+import com.sun.jersey.api.view.Viewable;
 
 //Will map the resource to the URL todos
 @Path("/cinemas")
@@ -77,7 +81,30 @@ public class CinemasResources {
 			}
 		};
 	    cinemas.addAll(TodoDao.instance.getCinemas().values());
-	    return "<html>" + cinemas + "</html>"; 
+	    return "" + cinemas; 
+	  }
+	  
+	  @Path("/dropdown")
+	  @GET
+	  @Produces(MediaType.TEXT_HTML)
+	  public String getCinemasDropdown() {
+	    List<Cinema> cinemas = new ArrayList<Cinema>(){
+			@Override
+			public
+			String toString() {
+				String str = "<select name=\"cinema_id\">";
+				for(Cinema cinema : this) {
+					str+="<option value=\"" + cinema.getId() + "\">";
+					str+=cinema.getName();
+					str+="</option>";
+				}
+				str+="</select>";
+								
+				return str;
+			}
+		};
+	    cinemas.addAll(TodoDao.instance.getCinemas().values());
+	    return "" + cinemas; 
 	  }
 	  
 	  
@@ -132,7 +159,8 @@ public class CinemasResources {
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	  public void newCinema(@FormParam("city") String city,
 			  @FormParam("name") String name,
-	      @Context HttpServletResponse servletResponse) throws IOException {
+	      @Context HttpServletResponse servletResponse,
+	      @Context HttpServletRequest request) throws IOException, ServletException {
 		  System.out.println("city : " + city);
 		  System.out.println("name : " + name);
 	    Cinema cinema = new Cinema(name, city);
