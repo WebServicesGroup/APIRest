@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import rest.todo.utils.*;
 import rest.todo.model.Cinema;
 import rest.todo.model.Session;
 import rest.todo.model.Movie;
@@ -84,10 +85,10 @@ public enum TodoDao {
 	  
 	  //collect data from Database
 	    Connection con;
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/hellocine?autoReconnect=true&useSSL=false";
-		String user ="root";
-		String password = "";
+		String driver = Constants.driver;
+		String url = Constants.url;
+		String user = Constants.user;
+		String password = Constants.password;
 		
 		//use the data from database
 		try {
@@ -130,10 +131,10 @@ public enum TodoDao {
   public Map<Integer,Session> getSessions(){
 	//collect data from Database
 	    Connection con;
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/hellocine?autoReconnect=true&useSSL=false";
-		String user ="root";
-		String password = "";
+		String driver = Constants.driver;
+		String url = Constants.url;
+		String user = Constants.user;
+		String password = Constants.password;
 	
 		//use the data from database
 		try {
@@ -180,10 +181,10 @@ public enum TodoDao {
 	  
 	//collect data from Database
 	    Connection con;
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/hellocine?autoReconnect=true&useSSL=false";
-		String user ="root";
-		String password = "";
+		String driver = Constants.driver;
+		String url = Constants.url;
+		String user = Constants.user;
+		String password = Constants.password;
 		
 		//use the data from database
 		try {
