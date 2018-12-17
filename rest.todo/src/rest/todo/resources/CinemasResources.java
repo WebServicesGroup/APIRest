@@ -1,25 +1,20 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest
 package rest.todo.resources;
 
-import rest.todo.dao.TodoDao;
-import rest.todo.model.Cinema;
-import rest.todo.model.Movie;
-import rest.todo.model.Session;
-import rest.todo.utils.Constants;
-import rest.todo.model.*;
-
-import java.sql.Connection;
+import java.sql.Connection;   //导入所需要的包
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -35,9 +30,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-<<<<<<< HEAD
 import rest.todo.dao.TodoDao;
 import rest.todo.model.Cinema;
 import rest.todo.model.Movie;
@@ -48,12 +43,10 @@ import rest.todo.utils.Constants;
 import com.sun.jersey.api.view.Viewable;
 import rest.todo.model.*;
 //Will map the resource to the URL todos
-=======
 //Will map the resource to the URL cinemas
->>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest
 @Path("/cinemas")
 public class CinemasResources {
-	  // Allows to insert contextual objects into the class, 
+	// Allows to insert contextual objects into the class, 
 	  // e.g. ServletContext, Request, Response, UriInfo
 	  @Context
 	  UriInfo uriInfo;
@@ -194,19 +187,11 @@ public class CinemasResources {
 		System.out.println("name : " + name);
 	    Cinema cinema = new Cinema(name, city);
 	    
-<<<<<<< HEAD
 	  //collect data from Database
 	    Connection con;
 		String driver = Constants.driver;
 		String url = Constants.url;
 		String user = Constants.user;
-=======
-		//collect data from Database
-	    Connection con;
-		String driver = Constants.driver;
-		String url = Constants.url;
-		String user = Constants.user;
->>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest
 		String password = Constants.password;
 		
 		//begin adding
@@ -256,21 +241,12 @@ public class CinemasResources {
 						       @Context HttpServletRequest request) throws IOException, ServletException {
 		System.out.println("cinema_id : " + cinemaId);
 	   
-<<<<<<< HEAD
 		//collect data from Database
 		    Connection con;
 			String driver = Constants.driver;
 			String url = Constants.url;
 			String user = Constants.user;
 			String password = Constants.password;
-=======
-		//collect data from Database
-		Connection con;
-		String driver = Constants.driver;
-		String url = Constants.url;
-		String user = Constants.user;
-		String password = Constants.password;
->>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest
 			
 		//begin to delete
 		try {
@@ -302,12 +278,5 @@ public class CinemasResources {
 	    
 	    //servletResponse.sendRedirect("../../create_session.html");
 	  }
-<<<<<<< HEAD
-	  
-	  
-	  
-}
-=======
 
 }
->>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest
