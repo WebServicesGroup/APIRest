@@ -2,6 +2,7 @@ package rest.todo.resources;
 
 import java.sql.Connection;   //导入所需要的包
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -196,8 +197,6 @@ public class CinemasResources {
 		  System.out.println("city : " + city);
 		  System.out.println("name : " + name);
 	    Cinema cinema = new Cinema(name, city);
-	    //Map<Integer, Cinema> cn = new HashMap<Integer, Cinema>(TodoDao.instance.getCinemas());
-	    //cn.put(cinema.getId(), cinema);
 	    
 	  //collect data from Database
 	    Connection con;
@@ -206,26 +205,19 @@ public class CinemasResources {
 		String user ="root";
 		String password = "";
 		
-		//use the data from database
+		//begin adding
 		try {
 			 //Load driver
 			 Class.forName(driver);
 			 //Connect to the MySQL database! !
 			 con = DriverManager.getConnection(url,user,password);
 	         
-			 //create statement object to execute SQL script
-			 Statement statement = con.createStatement();
-			 String sql = "select * from cinema";
-			 ResultSet rs = statement.executeQuery(sql); //ResultSet Class used to store the data you get from database
-			 contentCinema.clear();
-			  while (rs.next()) {
-				  Cinema cn = new Cinema();
-				  cn.setId(rs.getInt("id"));
-				  cn.setName(rs.getString("name"));
-				  cn.setCity(rs.getString("address"));
-				  contentCinema.put(cn.getId(), cn);
-			  }
-			  rs.close();
+			 PreparedStatement ps=con.prepareStatement("insert into cinema(name,address) values(?,?)");//创建一个Statement对象
+			  //ps.setInt(1,4);
+			  ps.setString(1,name);
+			  ps.setString(2,city);
+			  ps.executeUpdate();
+			 
 			  con.close();
 		
 	    //driver Exception & connection Exception
@@ -242,7 +234,7 @@ public class CinemasResources {
 	    
 	    // TODO when changes.
 
-	    servletResponse.sendRedirect("../../create_cinema.html");
+	    //servletResponse.sendRedirect("../../create_cinema.html");
 	    
 	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse);
 	    //servletResponse.sendRedirect("../../login.html");
