@@ -264,6 +264,9 @@ public class CinemasResources {
 				 PreparedStatement ps=con.prepareStatement("delete from cinema where id = ?");
 				  ps.setInt(1,cinemaId);
 				  ps.executeUpdate();
+				  ps=con.prepareStatement("delete from session where cinema_id = ?");
+				  ps.setInt(1,cinemaId);
+				  ps.executeUpdate();
 				  ps.close();
 				  con.close();
 			
