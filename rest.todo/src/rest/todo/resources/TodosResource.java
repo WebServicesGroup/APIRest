@@ -34,7 +34,7 @@ public class TodosResource {
   @Context
   Request request;
 
-
+ /*
   // Return the list of todos to the user in the browser
   @GET
   @Produces(MediaType.TEXT_XML)
@@ -91,6 +91,6 @@ public class TodosResource {
     return new TodoResource(uriInfo, request, id);
   }
   
-  
+  */
   
 } 

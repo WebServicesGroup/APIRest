@@ -1,6 +1,9 @@
+
 package rest.todo.resources;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,8 +89,8 @@ public class SessionsResources {
 	  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	  public void newCinema(@FormParam("movie_id") int movieId,
 			  @FormParam("cinema_id") int cinemaId,
-			  @FormParam("hour") String hour,
-			  @FormParam("date") String date,
+			  @FormParam("hour") Time hour,
+			  @FormParam("date") Date date,
 			  @FormParam("version") String version,
 	      @Context HttpServletResponse servletResponse,
 	      @Context HttpServletRequest request) throws IOException, ServletException {
