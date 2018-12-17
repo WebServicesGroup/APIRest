@@ -25,6 +25,7 @@ import javax.ws.rs.core.UriInfo;
 
 import rest.todo.dao.TodoDao;
 import rest.todo.model.Cinema;
+import rest.todo.model.Movie;
 import rest.todo.model.Session;
 import rest.todo.model.Todo;
 
@@ -48,6 +49,34 @@ public class SessionsResources {
 			  return "<html>" + session + "</html>";
 		  else
 			  return "<html>The session with this id" + session.getId() +" doesn\'t exist</html>";
+	  }
+	  
+	  @Path("/dropdown")
+	  @GET
+	  @Produces(MediaType.TEXT_HTML)
+	  public String getSessionsDropdown() {
+	    List<Session> session = new ArrayList<Session>(){
+			@Override
+			public
+			String toString() {
+				String str = "<select name=\"movie_id\">";
+				for(Session session : this) {
+					Cinema cinema = TodoDao.instance.getCinemas().get(session.getCinema_id());
+					Movie movie = TodoDao.instance.getMovies().get(session.getMovie_id());
+					str+="<option value=\"" + session.getId() + "\">";
+					str+=cinema.getName() + " ";
+					str+=movie.getName() + " ";
+					str+=session.getHour() + " ";
+					str+=session.getDate() + " ";
+					str+="</option>";
+				}
+				str+="</select>";
+								
+				return str;
+			}
+		};
+	    session.addAll(TodoDao.instance.getSessions().values());
+	    return "" + session; 
 	  }
 	  
 	  
