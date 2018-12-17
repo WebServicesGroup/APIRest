@@ -62,6 +62,7 @@ public class CinemasResources {
 	  }
 	  */
 	  
+	  
 	  @GET
 	  @Produces(MediaType.TEXT_HTML)
 	  @Path("{id}")
