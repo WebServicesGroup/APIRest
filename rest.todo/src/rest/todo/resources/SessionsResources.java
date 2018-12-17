@@ -148,12 +148,51 @@ public class SessionsResources {
 		  System.out.println("hour : " + hour);
 		  System.out.println("date : " + date);
 		  System.out.println("version : " + version);
-	    Session session = new Session(movieId,cinemaId,hour,date,version);
-	    TodoDao.instance.getSessions().put(session.getId(),session);
-	    
-	    // TODO when changes.
-	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse); 
-	    //servletResponse.sendRedirect("../../create_session.html");
+		  
+		  
+		  //collect data from Database
+		    Connection con;
+			String driver = Constants.driver;
+			String url = Constants.url;
+			String user = Constants.user;
+			String password = Constants.password;
+			
+			//begin adding
+			try {
+				 //Load driver
+				 Class.forName(driver);
+				 //Connect to the MySQL database! !
+				 con = DriverManager.getConnection(url,user,password);
+		         
+				 PreparedStatement ps=con.prepareStatement("insert into session(movie_id,cinema_id,hour,date,version) values(?,?,?,?,?)");//创建一个Statement对象
+				  //ps.setInt(1,4);
+				  ps.setInt(1,movieId);
+				  ps.setInt(2,cinemaId);
+				  ps.setTime(3, hour);
+				  ps.setDate(4, date);
+				  ps.setString(5, version);
+				  ps.executeUpdate();
+				 
+				  con.close();
+			
+		    //driver Exception & connection Exception
+			}catch(ClassNotFoundException e) {
+				System.out.println("Sorry,can`t find the Driver!"); 
+				e.printStackTrace(); 
+			}catch(SQLException e) {
+				 e.printStackTrace();  
+			}catch (Exception e) {
+				 e.printStackTrace();
+			}finally{
+				//System.out.println("Success access to Database！！");
+			}
+		    
+		    // TODO when changes.
+
+		    //servletResponse.sendRedirect("../../create_cinema.html");
+		    
+		    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse);
+		    //servletResponse.sendRedirect("../../login.html");
 	  }
 	  
 
