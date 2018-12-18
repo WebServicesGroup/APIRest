@@ -1,21 +1,25 @@
 package rest.todo.model;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import rest.todo.model.Movie;
 
-public class ListMovies extends ArrayList<Movie>{
+public class ListMovies extends ArrayList<Movie> {
 
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public String toString() {
 		String str = "";
-		for(Movie movie : this ) {
+		for (Movie movie : this) {
 			if (movie != null) {
-			str+="<a href=\"http://localhost:8080/rest.todo/rest/movies/";
-			str+=movie.getId();
-			str+="\">";
-			str+=movie;
-			str+="</a><br>";
+				str += "<a href=\"http://localhost:8080/rest.todo/rest/movies/";
+				str += movie.getId();
+				str += "\">";
+				str += movie;
+				str += "</a><br>";
 			}
 		}
 		return str;
