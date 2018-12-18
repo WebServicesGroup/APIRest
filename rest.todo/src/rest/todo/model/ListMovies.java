@@ -15,14 +15,8 @@ public class ListMovies extends ArrayList<Movie> {
 		String str = "";
 		for (Movie movie : this) {
 			if (movie != null) {
-				str += "<a href=\"http://localhost:8080/rest.todo/rest/movies/";
-				str += movie.getId();
-				str += "\">";
 				str += movie;
-				str += "</a><br>";
-				
-				
-				
+				str += "<br>";
 			}
 		}
 		return str;
