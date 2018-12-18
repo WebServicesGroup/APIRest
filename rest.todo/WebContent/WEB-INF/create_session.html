@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="../sessions/createSession" method="POST">
+<form action="http://localhost:8080/rest.todo/rest/sessions/createSession" method="POST">
 
 <!-- (int id, int movie_id, int cinema_id, String hour, String date, String version) -->
 
@@ -31,21 +31,13 @@
 
 
   Hour
-  
-   <select name="hour">
-  <option value="10:00">10:00</option>
-  <option value="12:00">12:00</option>
-  <option value="14:00">14:00</option>
-  <option value="16:00">16:00</option>
-  <option value="18:00">18:00</option>
-  <option value="20:00">20:00</option>
-  <option value="22:00">22:00</option>
-	</select> 
+   <input type="time" id="hour" name="hour"
+       min="8:00" max="23:00" step=1 required>
   
   <br>
   Date     <input type="date" id="date" name="date"
        value="2018-12-16"
-       min="2018-01-01" max="2018-12-31">
+       min="2018-01-01" max="2018-12-31"/>
        <br>
   
   

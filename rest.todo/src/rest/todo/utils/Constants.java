@@ -6,3 +6,10 @@ public class Constants {
 	public static final String user ="root";
 	public static final String password = "Claire97";
 }
+
+/*
+ * Connection con;
+		String driver = Constants.driver;
+		String url = Constants.url;
+		String user = Constants.user;
+		String password = Constants.password;*/
