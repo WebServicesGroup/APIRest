@@ -15,6 +15,7 @@ public class ListMovies extends ArrayList<Movie> {
 		String str = "";
 		for (Movie movie : this) {
 			if (movie != null) {
+				str += "<style>.img{width:200px;height:auto;}</style>";
 				str += movie;
 				str += "<br>";
 			}
