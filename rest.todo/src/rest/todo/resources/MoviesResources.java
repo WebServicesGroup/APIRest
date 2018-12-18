@@ -182,6 +182,7 @@ public class MoviesResources {
 			@FormParam("type") String type, @FormParam("actor") String actor, @FormParam("producer") String producer,
 			@FormParam("length") String length, @FormParam("country") String country,
 			@FormParam("on_screen_date") Date on_screen_date, @FormParam("language") String language,
+			@FormParam("file") String file,
 			@FormParam("description") String description, @Context HttpServletResponse servletResponse,
 			@Context HttpServletRequest request) throws IOException, ServletException {
 		System.out.println("name : " + name);
@@ -193,6 +194,7 @@ public class MoviesResources {
 		System.out.println("country : " + country);
 		System.out.println("on_screen_date" + on_screen_date);
 		System.out.println("language : " + language);
+		System.out.println("file : " + file);
 		System.out.println("description : " + description);
 
 		//collect data from Database
@@ -209,7 +211,7 @@ public class MoviesResources {
 			 //Connect to the MySQL database! !
 			 con = DriverManager.getConnection(url,user,password);
 
-			 PreparedStatement ps=con.prepareStatement("insert into movie(name,rate,type,actor,producer,length,country,on_screen_date,language,description) values(?,?,?,?,?,?,?,?,?,?)");
+			 PreparedStatement ps=con.prepareStatement("insert into movie(name,rate,type,actor,producer,length,country,on_screen_date,language,image,description) values(?,?,?,?,?,?,?,?,?,?,?)");
 			  //ps.setInt(1,4);
 			  ps.setString(1,name);
 			  ps.setInt(2, Integer.parseInt(rate));
@@ -221,7 +223,8 @@ public class MoviesResources {
 			  //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			  ps.setDate(8,on_screen_date);
 			  ps.setString(9,language);
-			  ps.setString(10, description);
+			  ps.setString(10, file);
+			  ps.setString(11, description);
 			  ps.executeUpdate();
 
 			  con.close();

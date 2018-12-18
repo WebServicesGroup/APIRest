@@ -140,7 +140,7 @@ public class Movie {
 	@Override
 	public String toString() {
 		String str = "<div id=film>";
-		str += "<div id=\"menu\"><img class=\"img\"src="+ image + " ></div>";
+		str += "<div id=\"menu\"><img class=\"img\" src="+ image + " ></div>";
 		str += "<div id=\"contenu\"><a href=\"http://localhost:8080/rest.todo/rest/movies/"+ id + "\">Movie : " + name + ", rate :" + rate + ", type :" + type +"</div>";
 		str += "</div>";
 		return str;
