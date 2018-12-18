@@ -139,10 +139,17 @@ public class Movie {
 
 	@Override
 	public String toString() {
+		//TODO 
+		/*
+		str = "<div id=\"bandeau\"><a href=\\\"http://localhost:8080/rest.todo/rest/movies/"+ movie.getId() +"\">" + movie + "</a></div>";
+		str += "<div id=\"menu\">testtest</div>";
+		str += "<div id=\"contenu\">Ceci est le contenu</div>";
+		*/
 		return "Movie " + name + ", rate=" + rate + ", type=" + type;
 	}
 
 	public String allTheInfos() {
+		
 		return "<h1>Movie</h1>" + name + "<br>Rate " + rate + "<br>Type " + type + "<br>Actors " + actors
 				+ "<br>Producers " + producers + "<br>Length " + length + "<br> Country " + country
 				+ "<br>On screen date " + onScreenDate + "<br>Language " + language + "<br>Short description:<br>"
