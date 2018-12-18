@@ -8,26 +8,31 @@ public class Cinema {
 	private int id;
 	private String name;
 	private String city;
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
+
 	public Cinema(String name, String city) {
 		super();
 		this.id = count;
@@ -35,15 +40,13 @@ public class Cinema {
 		this.city = city;
 		count++;
 	}
-	
-	public Cinema() {}
+
+	public Cinema() {
+	}
+
 	@Override
 	public String toString() {
-		return "<p>" + id + " " +name + " in " + city + "</p>";
-		//return  "Cinema " + name + " in " + city;
+		return "<p>" + name + " in " + city + "</p>";
 	}
-	
-	
-	
-	
+
 }

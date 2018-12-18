@@ -12,7 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 
  
- 
 public class wentingTestConnection {
 	
 	public static void main(String[] args) {

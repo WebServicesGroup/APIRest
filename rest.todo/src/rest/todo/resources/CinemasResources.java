@@ -1,7 +1,11 @@
 package rest.todo.resources;
 
+<<<<<<< HEAD
 import java.sql.Connection;   
 
+=======
+import java.sql.Connection;   
+>>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest
 import rest.todo.dao.TodoDao;
 import rest.todo.model.Cinema;
 import rest.todo.model.Movie;
@@ -9,16 +13,17 @@ import rest.todo.model.Session;
 import rest.todo.utils.Constants;
 import rest.todo.model.*;
 
+<<<<<<< HEAD
 import java.sql.Connection;
+=======
+>>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,6 +40,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 
+<<<<<<< HEAD
 
 import rest.todo.dao.TodoDao;
 import rest.todo.model.Cinema;
@@ -52,9 +58,12 @@ import com.sun.jersey.api.view.Viewable;
 import rest.todo.model.*;
 //Will map the resource to the URL todos
 
+=======
+//Will map the resource to the URL cinemas
+>>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest
 @Path("/cinemas")
 public class CinemasResources {
-	  // Allows to insert contextual objects into the class, 
+	// Allows to insert contextual objects into the class, 
 	  // e.g. ServletContext, Request, Response, UriInfo
 	  @Context
 	  UriInfo uriInfo;
@@ -73,7 +82,7 @@ public class CinemasResources {
 		  
 		  // if the there is no cinema with the id entered
 		  if(cinema == null)
-			  return "<html>The cinema with this id " +  cinema.getId() + " doesn\'t exist</html>";
+			  return "<html>The cinema with this id doesn\'t exist</html>";
 		  
 		  else {
 			  ListMovies movieList= new ListMovies();
@@ -193,6 +202,7 @@ public class CinemasResources {
 							@Context HttpServletRequest request) throws IOException, ServletException {
 		System.out.println("city : " + city);
 		System.out.println("name : " + name);
+<<<<<<< HEAD
 	    Cinema cinema = new Cinema(name, city);
 
 
@@ -201,6 +211,14 @@ public class CinemasResources {
 		String driver = Constants.driver;
 		String url = Constants.url;
 		String user = Constants.user;
+=======
+	    
+	  //collect data from Database
+	    Connection con;
+		String driver = Constants.driver;
+		String url = Constants.url;
+		String user = Constants.user;
+>>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest
 		String password = Constants.password;
 
 		
@@ -251,7 +269,10 @@ public class CinemasResources {
 						       @Context HttpServletRequest request) throws IOException, ServletException {
 		System.out.println("cinema_id : " + cinemaId);
 	   
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest
 		//collect data from Database
 		    Connection con;
 			String driver = Constants.driver;
@@ -259,8 +280,11 @@ public class CinemasResources {
 			String user = Constants.user;
 			String password = Constants.password;
 
+<<<<<<< HEAD
 
 			
+=======
+>>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest
 		//begin to delete
 		try {
 			Class.forName(driver);
@@ -289,6 +313,11 @@ public class CinemasResources {
 			}
 	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse); 
 	    
+<<<<<<< HEAD
 	    //servletResponse.sendRedirect("../../create_session.html");
 	  }}
 
+=======
+	  }
+}
+>>>>>>> branch 'master' of https://github.com/WebServicesGroup/APIRest

@@ -23,162 +23,146 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.JAXBElement;
 
-
 import rest.todo.dao.TodoDao;
 import rest.todo.model.Cinema;
-import rest.todo.model.Todo;
 import rest.todo.model.User;
 
 //Will map the resource to the URL todos
 @Path("/users")
 public class UsersResources {
-  @Context
-  UriInfo uriInfo;
-  @Context
-  Request request;
+	@Context
+	UriInfo uriInfo;
+	@Context
+	Request request;
 
-  @Path("createCinema")
-  @POST
-  @Produces(MediaType.TEXT_HTML)
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public void redirectToCreateCinema(@FormParam("connected") String connected,
-      @Context HttpServletResponse servletResponse,
-      @Context HttpServletRequest request) throws IOException, ServletException {
-	  System.out.println("connected : " + connected);
-    
-    if(connected.equals("true")) {
-	    // TODO when changes.
-    	request.getRequestDispatcher("/WEB-INF/create_cinema.html").forward(request, servletResponse); 
-	    //servletResponse.sendRedirect("../WEB-INF/administration.html");
-    }
-    else {
-    	servletResponse.sendRedirect("../login.html");
-    }
-  }
-  
-  @Path("deleteCinema")
-  @POST
-  @Produces(MediaType.TEXT_HTML)
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public void redirectToDeleteCinema(@FormParam("connected") String connected,
-      @Context HttpServletResponse servletResponse,
-      @Context HttpServletRequest request) throws IOException, ServletException {
-	  System.out.println("connected : " + connected);
-    
-    if(connected.equals("true")) {
-	    // TODO when changes.
-    	request.getRequestDispatcher("/WEB-INF/delete_cinema.html").forward(request, servletResponse); 
-	    //servletResponse.sendRedirect("../WEB-INF/administration.html");
-    }
-    else {
-    	servletResponse.sendRedirect("../login.html");
-    }
-  }
-  
-  @Path("createMovie")
-  @POST
-  @Produces(MediaType.TEXT_HTML)
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public void redirectToCreateMovie(@FormParam("connected") String connected,
-      @Context HttpServletResponse servletResponse,
-      @Context HttpServletRequest request) throws IOException, ServletException {
-	  System.out.println("connected : " + connected);
-    
-    if(connected.equals("true")) {
-	    // TODO when changes.
-    	request.getRequestDispatcher("/WEB-INF/create_movie.html").forward(request, servletResponse); 
-	    //servletResponse.sendRedirect("../WEB-INF/administration.html");
-    }
-    else {
-    	servletResponse.sendRedirect("../login.html");
-    }
-  }
-  
-  @Path("deleteMovie")
-  @POST
-  @Produces(MediaType.TEXT_HTML)
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public void redirectToDeleteMovie(@FormParam("connected") String connected,
-      @Context HttpServletResponse servletResponse,
-      @Context HttpServletRequest request) throws IOException, ServletException {
-	  System.out.println("connected : " + connected);
-    
-    if(connected.equals("true")) {
-	    // TODO when changes.
-    	request.getRequestDispatcher("/WEB-INF/delete_movie.html").forward(request, servletResponse); 
-	    //servletResponse.sendRedirect("../WEB-INF/administration.html");
-    }
-    else {
-    	servletResponse.sendRedirect("../login.html");
-    }
-  }
-  
-  @Path("createSession")
-  @POST
-  @Produces(MediaType.TEXT_HTML)
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public void redirectToCreateSession(@FormParam("connected") String connected,
-      @Context HttpServletResponse servletResponse,
-      @Context HttpServletRequest request) throws IOException, ServletException {
-	  System.out.println("connected : " + connected);
-    
-    if(connected.equals("true")) {
-	    // TODO when changes.
-    	request.getRequestDispatcher("/WEB-INF/create_session.html").forward(request, servletResponse); 
-	    //servletResponse.sendRedirect("../WEB-INF/administration.html");
-    }
-    else {
-    	servletResponse.sendRedirect("../login.html");
-    }
-  }
-  
-  @Path("deleteSession")
-  @POST
-  @Produces(MediaType.TEXT_HTML)
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public void redirectToDeleteSession(@FormParam("connected") String connected,
-      @Context HttpServletResponse servletResponse,
-      @Context HttpServletRequest request) throws IOException, ServletException {
-	  System.out.println("connected : " + connected);
-    
-    if(connected.equals("true")) {
-	    // TODO when changes.
-    	request.getRequestDispatcher("/WEB-INF/delete_session.html").forward(request, servletResponse); 
-	    //servletResponse.sendRedirect("../WEB-INF/administration.html");
-    }
-    else {
-    	servletResponse.sendRedirect("../login.html");
-    }
-  }
+	@POST
+	@Path("createCinema")
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void redirectToCreateCinema(@FormParam("connected") String connected,
+			@Context HttpServletResponse servletResponse, @Context HttpServletRequest request)
+			throws IOException, ServletException {
+		System.out.println("connected : " + connected);
 
+		if (connected.equals("true")) {
+			request.getRequestDispatcher("/WEB-INF/create_cinema.html").forward(request, servletResponse);
+		} else {
+			servletResponse.sendRedirect("../login.html");
+		}
+	}
 
-  @POST
-  @Produces(MediaType.TEXT_HTML)
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  public void login(@FormParam("login") String login,
-		  @FormParam("password") String password,
-      @Context HttpServletResponse servletResponse,
-      @Context HttpServletRequest request) throws IOException, ServletException {
-	  System.out.println("login : " + login);
-	  System.out.println("password : " + password);
-    
-	boolean connected = false;
-    for(User user : TodoDao.instance.getUsers()) {
-    	if(user.getLogin().equals(login) && user.getPassword().equals(password))
-    		connected = true;
-    }
-    
-    if(connected) {
-	    // TODO when changes.
-    	request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse); 
-	    //servletResponse.sendRedirect("../WEB-INF/administration.html");
-    }
-    else {
-    	servletResponse.sendRedirect("../login.html");
-    }
-  }
- 
+	@POST
+	@Path("deleteCinema")
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void redirectToDeleteCinema(@FormParam("connected") String connected,
+			@Context HttpServletResponse servletResponse, @Context HttpServletRequest request)
+			throws IOException, ServletException {
+		System.out.println("connected : " + connected);
 
-  
+		if (connected.equals("true")) {
+			// TODO when changes.
+			request.getRequestDispatcher("/WEB-INF/delete_cinema.html").forward(request, servletResponse);
+			// servletResponse.sendRedirect("../WEB-INF/administration.html");
+		} else {
+			servletResponse.sendRedirect("../login.html");
+		}
+	}
 
-} 
+	@POST
+	@Path("createMovie")
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void redirectToCreateMovie(@FormParam("connected") String connected,
+			@Context HttpServletResponse servletResponse, @Context HttpServletRequest request)
+			throws IOException, ServletException {
+		System.out.println("connected : " + connected);
+
+		if (connected.equals("true")) {
+			// TODO when changes.
+			request.getRequestDispatcher("/WEB-INF/create_movie.html").forward(request, servletResponse);
+			// servletResponse.sendRedirect("../WEB-INF/administration.html");
+		} else {
+			servletResponse.sendRedirect("../login.html");
+		}
+	}
+
+	@POST
+	@Path("deleteMovie")
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void redirectToDeleteMovie(@FormParam("connected") String connected,
+			@Context HttpServletResponse servletResponse, @Context HttpServletRequest request)
+			throws IOException, ServletException {
+		System.out.println("connected : " + connected);
+
+		if (connected.equals("true")) {
+			// TODO when changes.
+			request.getRequestDispatcher("/WEB-INF/delete_movie.html").forward(request, servletResponse);
+			// servletResponse.sendRedirect("../WEB-INF/administration.html");
+		} else {
+			servletResponse.sendRedirect("../login.html");
+		}
+	}
+
+	@POST
+	@Path("createSession")
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void redirectToCreateSession(@FormParam("connected") String connected,
+			@Context HttpServletResponse servletResponse, @Context HttpServletRequest request)
+			throws IOException, ServletException {
+		System.out.println("connected : " + connected);
+
+		if (connected.equals("true")) {
+			// TODO when changes.
+			request.getRequestDispatcher("/WEB-INF/create_session.html").forward(request, servletResponse);
+			// servletResponse.sendRedirect("../WEB-INF/administration.html");
+		} else {
+			servletResponse.sendRedirect("../login.html");
+		}
+	}
+
+	@POST
+	@Path("deleteSession")
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void redirectToDeleteSession(@FormParam("connected") String connected,
+			@Context HttpServletResponse servletResponse, @Context HttpServletRequest request)
+			throws IOException, ServletException {
+		System.out.println("connected : " + connected);
+
+		if (connected.equals("true")) {
+			// TODO when changes.
+			request.getRequestDispatcher("/WEB-INF/delete_session.html").forward(request, servletResponse);
+			// servletResponse.sendRedirect("../WEB-INF/administration.html");
+		} else {
+			servletResponse.sendRedirect("../login.html");
+		}
+	}
+
+	@POST
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void login(@FormParam("login") String login, @FormParam("password") String password,
+			@Context HttpServletResponse servletResponse, @Context HttpServletRequest request)
+			throws IOException, ServletException {
+		System.out.println("login : " + login);
+		System.out.println("password : " + password);
+
+		boolean connected = false;
+		for (User user : TodoDao.instance.getUsers()) {
+			if (user.getLogin().equals(login) && user.getPassword().equals(password))
+				connected = true;
+		}
+
+		if (connected) {
+			// TODO when changes.
+			request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse);
+			// servletResponse.sendRedirect("../WEB-INF/administration.html");
+		} else {
+			servletResponse.sendRedirect("../login.html");
+		}
+	}
+
+}

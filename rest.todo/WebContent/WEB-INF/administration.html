@@ -5,35 +5,64 @@
 <title>Administration page</title>
 </head>
 <body>
-
-	<form action="/rest.todo/rest/users/createCinema" method="POST">
-	 	<input name="connected" value="true" type="hidden"/>
-		<input type="submit" value="create cinema"/>
-	</form> 
-	<form action="/rest.todo/rest/users/createMovie" method="POST">
-	 	<input name="connected" value="true" type="hidden"/>
-		<input type="submit" value="create movie"/>
-	</form>
-	<form action="/rest.todo/rest/users/createSession" method="POST">
-	 	<input name="connected" value="true" type="hidden"/>
-		<input type="submit" value="create session"/>
-	</form>
-	
-	<form action="/rest.todo/rest/users/deleteCinema" method="POST">
-	 	<input name="connected" value="true" type="hidden"/>
-		<input type="submit" value="delete cinema"/>
-	</form>
-	
-	<form action="/rest.todo/rest/users/deleteMovie" method="POST">
-	 	<input name="connected" value="true" type="hidden"/>
-		<input type="submit" value="delete movie"/>
-	</form>
-	
-	<form action="/rest.todo/rest/users/deleteSession" method="POST">
-	 	<input name="connected" value="true" type="hidden"/>
-		<input type="submit" value="delete session"/>
-	</form>
-	
+	<h2 align = 'center'>Create and delete</h2>
+	<div align = 'center'>
+		<form action="/rest.todo/rest/users/createCinema" method="POST">
+		 	<input name="connected" value="true" type="hidden"/>
+			<input class="button" type="submit" value="create cinema"/>
+		</form> 
+		<form action="/rest.todo/rest/users/createMovie" method="POST">
+		 	<input name="connected" value="true" type="hidden"/>
+			<input class="button" type="submit" value="create movie"/>
+		</form>
+		<form action="/rest.todo/rest/users/createSession" method="POST">
+		 	<input name="connected" value="true" type="hidden"/>
+			<input class="button" type="submit" value="create session"/>
+		</form>
+		
+		<form action="/rest.todo/rest/users/deleteCinema" method="POST">
+		 	<input name="connected" value="true" type="hidden"/>
+			<input class="delete" type="submit" value="delete cinema"/>
+		</form>
+		
+		<form action="/rest.todo/rest/users/deleteMovie" method="POST">
+		 	<input name="connected" value="true" type="hidden"/>
+			<input class="delete" type="submit" value="delete movie"/>
+		</form>
+		
+		<form action="/rest.todo/rest/users/deleteSession" method="POST">
+		 	<input name="connected" value="true" type="hidden"/>
+			<input class="delete" type="submit" value="delete session"/>
+		</form>
+	</div>
 	<a href="/rest.todo/"><button>logout</button></a>
 </body>
+
+<style>
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  width: 200px;
+}
+
+.delete{
+  background-color: #f44336;;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  width: 200px;
+}
+
+.button:hover .delete:hover{
+  background-color: green;
+}
+</style>
 </html>
