@@ -148,10 +148,10 @@ public class Movie {
 
 	public String allTheInfos() {
 		
-		return "<h1>Movie</h1>" + name + "<br>Rate " + rate + "<br>Type " + type + "<br>Actors " + actors
+		return "<h1>Movie</h1>" + "<div id=\"menu\"><img style=\"width:200px;height:auto;\"  class=\"img\" src="+ image + " ></div>" + name + "<br>Rate " + rate + "<br>Type " + type + "<br>Actors " + actors
 				+ "<br>Producers " + producers + "<br>Length " + length + "<br> Country " + country
 				+ "<br>On screen date " + onScreenDate + "<br>Language " + language + "<br>Short description:<br>"
-				+ shortDescription + "<br>Image " + image;
+				+ shortDescription + "<br>";
 	}
 
 }

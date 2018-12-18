@@ -180,6 +180,7 @@ public enum TodoDao {
 				mv.setCountry(rs.getString("country"));
 				mv.setOnScreenDate(rs.getDate("on_screen_date"));
 				mv.setLanguage(rs.getString("language"));
+				mv.setShortDescription(rs.getString("description"));
 				mv.setImage(rs.getString("image"));
 				contentMovie.put(mv.getId(), mv);
 			}
