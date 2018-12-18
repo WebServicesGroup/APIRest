@@ -1,10 +1,15 @@
 package rest.todo.resources;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +32,7 @@ import rest.todo.model.Cinema;
 import rest.todo.model.ListMovies;
 import rest.todo.model.Movie;
 import rest.todo.model.Session;
+import rest.todo.utils.Constants;
 
 @Path("/movies")
 public class MoviesResources {
@@ -180,8 +186,51 @@ public class MoviesResources {
 		  System.out.println("language : " + language);
 		  System.out.println("description : " + description);
 		  
-	    Movie movie = new Movie(name, Integer.parseInt(rate), type,  actor, producer, Integer.parseInt(length), country, on_screen_date, language, description, "test");
-	    TodoDao.instance.getMovies().put(movie.getId(),movie);
+		//collect data from Database
+		    Connection con;
+			String driver = Constants.driver;
+			String url = Constants.url;
+			String user = Constants.user;
+			String password = Constants.password;
+			
+			//begin adding
+			try {
+				 //Load driver
+				 Class.forName(driver);
+				 //Connect to the MySQL database! !
+				 con = DriverManager.getConnection(url,user,password);
+		         
+				 PreparedStatement ps=con.prepareStatement("insert into movie(name,rate,type,actor,producer,length,country,on_screen_date,language,description) values(?,?,?,?,?,?,?,?,?,?)");
+				  //ps.setInt(1,4);
+				  ps.setString(1,name);
+				  ps.setInt(2, Integer.parseInt(rate));
+				  ps.setString(3, type);
+				  ps.setString(4, actor);
+				  ps.setString(5, producer);
+				  ps.setInt(6, Integer.parseInt(length));
+				  ps.setString(7, country);
+				  //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				  ps.setDate(8,on_screen_date);
+				  ps.setString(9,language);
+				  ps.setString(10, description);
+				  ps.executeUpdate();
+				 
+				  con.close();
+			
+		    //driver Exception & connection Exception
+			}catch(ClassNotFoundException e) {
+				System.out.println("Sorry,can`t find the Driver!"); 
+				e.printStackTrace(); 
+			}catch(SQLException e) {
+				 e.printStackTrace();  
+			}catch (Exception e) {
+				 e.printStackTrace();
+			}finally{
+				//System.out.println("Success access to Database£¡£¡");
+			}
+		  
+	    //Movie movie = new Movie(name, Integer.parseInt(rate), type,  actor, producer, Integer.parseInt(length), country, on_screen_date, language, description, "test");
+	    //TodoDao.instance.getMovies().put(movie.getId(),movie);
 	    
 	    // TODO when changes.
 	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse); 
@@ -206,9 +255,40 @@ public class MoviesResources {
 				TodoDao.instance.getMovies().remove(session);
 			}
 		}
+		  
+		//collect data from Database
+		  Connection con;
+			String driver = Constants.driver;
+			String url = Constants.url;
+			String user = Constants.user;
+			String password = Constants.password;
+			
+			//begin to delete
+			try {
+				 Class.forName(driver);
+				 con = DriverManager.getConnection(url,user,password);
+				 PreparedStatement ps=con.prepareStatement("delete from movie where id = ?");
+				  ps.setInt(1,movieId);
+				  ps.executeUpdate();
+				  ps=con.prepareStatement("delete from session where movie_id = ?");
+				  ps.setInt(1,movieId);
+				  ps.executeUpdate();
+				  ps.close();
+				  con.close();
+			
+		    //driver Exception & connection Exception
+			}catch(ClassNotFoundException e) {
+				System.out.println("Sorry,can`t find the Driver!"); 
+				e.printStackTrace(); 
+			}catch(SQLException e) {
+				 e.printStackTrace();  
+			}catch (Exception e) {
+				 e.printStackTrace();
+			}finally{
+				//System.out.println("Success access to Database£¡£¡");
+			}
 		
-		
-		 TodoDao.instance.getMovies().remove(movieId);
+		 //TodoDao.instance.getMovies().remove(movieId);
 	    // TODO when changes.
 	    request.getRequestDispatcher("/WEB-INF/administration.html").forward(request, servletResponse); 
 	    //servletResponse.sendRedirect("../../create_session.html");
