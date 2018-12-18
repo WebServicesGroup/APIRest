@@ -69,7 +69,7 @@ public class CinemasResources {
 		  
 		  // if the there is no cinema with the id entered
 		  if(cinema == null)
-			  return "<html>The cinema with this id " +  cinema.getId() + " doesn\'t exist</html>";
+			  return "<html>The cinema with this id " +  id + " doesn\'t exist</html>";
 		  
 		  else {
 			  ListMovies movieList= new ListMovies();
@@ -83,13 +83,16 @@ public class CinemasResources {
 			  }
 			  
 			  // get the UNIQUE movies
-			  HashSet<Movie> hashSet = new HashSet<Movie>();
+			  HashSet<Integer> hashSet = new HashSet<Integer>();
 			  
 			  for(Session session : sessionList)
-				  hashSet.add(TodoDao.instance.getMovies().get(session.getMovie_id()));
+				  hashSet.add(session.getMovie_id());
 			  
 			  // get the unique movies in the movie list
-			  movieList.addAll(hashSet);
+			  for(Integer integ : hashSet) {
+				  movieList.add(TodoDao.instance.getMovies().get(integ));
+			  }
+			  
 			  
 			  return "<html><h1>" + cinema + "</h1><h2>" + "All the movies in this cinema</h2>" +  movieList + "</html>";
 		  }
