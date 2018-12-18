@@ -11,34 +11,49 @@
 		 	<input name="connected" value="true" type="hidden"/>
 			<input class="button" type="submit" value="create cinema"/>
 		</form> 
+		<br>
 		<form action="/rest.todo/rest/users/createMovie" method="POST">
 		 	<input name="connected" value="true" type="hidden"/>
 			<input class="button" type="submit" value="create movie"/>
 		</form>
+		<br>
 		<form action="/rest.todo/rest/users/createSession" method="POST">
 		 	<input name="connected" value="true" type="hidden"/>
 			<input class="button" type="submit" value="create session"/>
 		</form>
-		
+		<br>
 		<form action="/rest.todo/rest/users/deleteCinema" method="POST">
 		 	<input name="connected" value="true" type="hidden"/>
 			<input class="delete" type="submit" value="delete cinema"/>
 		</form>
-		
+		<br>
 		<form action="/rest.todo/rest/users/deleteMovie" method="POST">
 		 	<input name="connected" value="true" type="hidden"/>
 			<input class="delete" type="submit" value="delete movie"/>
 		</form>
-		
+		<br>
 		<form action="/rest.todo/rest/users/deleteSession" method="POST">
 		 	<input name="connected" value="true" type="hidden"/>
 			<input class="delete" type="submit" value="delete session"/>
 		</form>
+		<br>
 	</div>
-	<a href="/rest.todo/"><button>logout</button></a>
+	<a href="/rest.todo/"><button id ="homepage">logout</button></a>
 </body>
 
 <style>
+
+		#homepage {
+		  background-color: #707070; /* Green */
+		  border: none;
+		  color: white;
+		  padding: 10px 15px;
+		  text-align: center;
+		  text-decoration: none;
+		  display: inline-block;
+		  font-size: 10px;
+		}
+
 .button {
   background-color: #4CAF50;
   border: none;
