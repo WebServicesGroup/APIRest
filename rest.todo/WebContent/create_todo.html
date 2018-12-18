@@ -66,39 +66,105 @@ function imgPreview(fileDom){
  </head>
  
 <body>
-  <form action="../rest.todo/rest/movies/createMovie" method="POST">
-  <pre>
-  
-  Name     <input name="name" />
-  
-  Rate     <input name="rate" />
-  
-  Type     <input name="type" />
-  
-  Actors   <input name="actor" />
-  
-  Producer <input name="producer" />
-  
-  Length   <input name="length"/>
-  
-  Country  <input name="country">
-  
-  On_sreen <input name="on_screen_date">
-  
-  Language <input name="language">
-  
-  </pre>
-  <img id="preview" />
-    <br />
-    <input type="file" name="file" id="imgFile" onchange="imgPreview(this)" />
-    <br/>
-    <!-- <input type="button" id="btnUpload" value="ÉÏ´«" onclick="upload()" /><div id="progress" style="width:200px;height:24px;"></div> -->
-    <p id="showimg"></p>
-   
-  Description:
-  <TEXTAREA NAME="description" COLS=40 ROWS=6></TEXTAREA>
-  <br/>
-  <input type="submit" value="Submit" />
-  </form>
+
+	<h2>Create a movie</h2>
+	
+	<div class="recherche_p">
+		
+		<form action="../rest.todo/rest/movies/createMovie" method="POST" class="searchthis">
+			
+			<b> Name </b>
+			<input class="search" name="name" type="text" />
+			
+			<b> Rate </b>
+			<input class="search" name="rate" type="text" />
+		
+			<b> Type </b>
+			<input class="search" name="type" type="text" />
+			
+			<b> Actors </b>
+			<input class="search" name="actor" type="text" />
+		
+			<b> Producers </b>
+			<input class="search" name="producer" type="text" />
+			
+			<b> Length </b>
+			<input class="search" name="length" type="text" />
+		
+			<b> Country </b>
+			<input class="search" name="country" type="text" />
+			
+			<b> On Screen </b>
+			<input class="search" name="on_screen_date" type="text" />
+		
+			<b> Language </b>
+			<input class="search" name="language" type="text" />
+	
+			<b> Image URL </b>
+			<input class="search" name="file" type="text" />	
+			
+			<b> Description </b>
+			<TEXTAREA class="search" NAME="description" COLS=40 ROWS=6/>
+			
+			 <pre/>
+			<input id="search-btn" type="submit" value="Submit" />
+		
+		</form>
+
+	</div>
+ 
 </body>
+<style type='text/css'>
+	
+		/* Fond du gadget de la barre de recherche */
+		.recherche_p {
+		  background-color: #eeeeee;   /* Couleur de fond */
+		  border-style: solid;   /* Style de la bordure  */
+		  border-width: 1px;   /* Epaisseur de la bordure  */
+		  border-color: #dddddd;   /* Couleur de la bordure  */
+		  padding: 10px 10px 10px 10px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+		}
+		
+		/* Champ de saisie */
+		.searchthis .search {
+		  background-color: #ffffff;   /* Couleur de fond */
+		  border-style: solid;   /* Style de la bordure  */
+		  border-width: 1px;   /* Epaisseur de la bordure  */
+		  border-color: #dddddd;   /* Couleur de la bordure  */
+		  padding: 5px 10px 5px 10px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+		  width: 98.5%;   /* Permet d'ajuster la largeur du champ de saisie à 100% */
+		  box-sizing: border-box;   /* Important */
+		  font-family: Lato;   /* Police du texte */
+		  font-size: 12px;   /* Taille de la police du texte */
+		  font-weight: normal;   /* Graisse du texte : normal = normal ; bold = gras */
+		  letter-spacing: 1px;   /* Espacement des caractères */
+		}
+		
+		/* Bouton valider */
+		.searchthis #search-btn {
+		  background-color: #E8B960;   /* Couleur de fond */
+		  border-style: solid;   /* Style de la bordure  */
+		  border-width: 1px;   /* Epaisseur de la bordure  */
+		  border-color: #E8B960;   /* Couleur de la bordure  */
+		  padding: 10px 10px 5px 10px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+		  width: 98.5%;   /* Permet d'ajuster la largeur du champ de saisie à 100% */
+		  box-sizing: border-box;   /* Important */
+		  font-family: PT sans;   /* Police du texte */
+		  font-size: 13px;   /* Taille de la police du texte */
+		  font-weight: normal;   /* Graisse du texte : normal = normal ; bold = gras */
+		  letter-spacing: 2px;   /* Espacement des caractères */
+		  margin: 10px 0 0 0;   /* Espace autour du bouton : haut droite bas gauche  */
+		  text-transform: uppercase;   /* Transforme le texte en majuscules */
+		  color: #ffffff;   /* Couleur du texte */
+		}
+		
+		/* Bouton valider quand survolé par la souris */
+		.searchthis #search-btn:hover {
+		  background-color: #ffffff;   /* Couleur de fond */
+		  color: #E8B960;   /* Couleur du texte */
+		  cursor: pointer;   /* Apparence du curseur comme pour un lien */
+		}
+	
+	</style>
+	  
 </html> 

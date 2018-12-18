@@ -20,6 +20,9 @@ public class ListMovies extends ArrayList<Movie> {
 				str += "\">";
 				str += movie;
 				str += "</a><br>";
+				
+				
+				
 			}
 		}
 		return str;

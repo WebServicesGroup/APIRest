@@ -5,8 +5,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="http://localhost:8080/rest.todo/rest/sessions/deleteSession" method="POST">
-	Sessions:<div id="dropdownSessions">SessionsDropDown</div>
+<form action="http://localhost:8080/rest.todo/rest/sessions/deleteSession" method="POST" class="searchthis">
+	<b> Sessions </b>
+	<div class="search" id="dropdownSessions">SessionsDropDown</div>
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	 <script>
 	    $( document ).ready(function() { 
@@ -17,8 +18,62 @@
 				});
 	    });
 	</script>
-<input type="submit" value="Submit" />
+<input type="submit" value="Submit" id="search-btn"/>
 </form>
   
 </body>
+
+<style>
+	
+		/* Fond du gadget de la barre de recherche */
+		.recherche_p {
+		  background-color: #eeeeee;   /* Couleur de fond */
+		  border-style: solid;   /* Style de la bordure  */
+		  border-width: 1px;   /* Epaisseur de la bordure  */
+		  border-color: #dddddd;   /* Couleur de la bordure  */
+		  padding: 10px 10px 10px 10px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+		}
+		
+		/* Champ de saisie */
+		.searchthis .search {
+		  background-color: #ffffff;   /* Couleur de fond */
+		  border-style: solid;   /* Style de la bordure  */
+		  border-width: 1px;   /* Epaisseur de la bordure  */
+		  border-color: #dddddd;   /* Couleur de la bordure  */
+		  padding: 5px 10px 5px 10px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+		  width: 98.5%;   /* Permet d'ajuster la largeur du champ de saisie à 100% */
+		  box-sizing: border-box;   /* Important */
+		  font-family: Lato;   /* Police du texte */
+		  font-size: 12px;   /* Taille de la police du texte */
+		  font-weight: normal;   /* Graisse du texte : normal = normal ; bold = gras */
+		  letter-spacing: 1px;   /* Espacement des caractères */
+		}
+		
+		/* Bouton valider */
+		.searchthis #search-btn {
+		  background-color: #E8B960;   /* Couleur de fond */
+		  border-style: solid;   /* Style de la bordure  */
+		  border-width: 1px;   /* Epaisseur de la bordure  */
+		  border-color: #E8B960;   /* Couleur de la bordure  */
+		  padding: 10px 10px 5px 10px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+		  width: 98.5%;   /* Permet d'ajuster la largeur du champ de saisie à 100% */
+		  box-sizing: border-box;   /* Important */
+		  font-family: PT sans;   /* Police du texte */
+		  font-size: 13px;   /* Taille de la police du texte */
+		  font-weight: normal;   /* Graisse du texte : normal = normal ; bold = gras */
+		  letter-spacing: 2px;   /* Espacement des caractères */
+		  margin: 10px 0 0 0;   /* Espace autour du bouton : haut droite bas gauche  */
+		  text-transform: uppercase;   /* Transforme le texte en majuscules */
+		  color: #ffffff;   /* Couleur du texte */
+		}
+		
+		/* Bouton valider quand survolé par la souris */
+		.searchthis #search-btn:hover {
+		  background-color: #ffffff;   /* Couleur de fond */
+		  color: #E8B960;   /* Couleur du texte */
+		  cursor: pointer;   /* Apparence du curseur comme pour un lien */
+		}
+	
+	</style>
+
 </html>
