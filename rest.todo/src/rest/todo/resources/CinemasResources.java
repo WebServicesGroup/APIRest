@@ -9,7 +9,6 @@ import rest.todo.model.Session;
 import rest.todo.utils.Constants;
 import rest.todo.model.*;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -41,11 +40,8 @@ import rest.todo.model.Cinema;
 import rest.todo.model.Movie;
 import rest.todo.model.Session;
 
-import rest.todo.model.Todo;
 import rest.todo.utils.Constants;
 
-
-import rest.todo.model.Todo;
 import rest.todo.utils.Constants;
 
 import com.sun.jersey.api.view.Viewable;
